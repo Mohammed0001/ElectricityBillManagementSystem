@@ -24,17 +24,19 @@ public class Employee extends User implements ICategoryObserver{
     }
     
     @Override
-    public void createEmployeeAccount(){
-        
+    public boolean createAccount(){
+        return true;
     }
     
     @Override
-    public void updateEmployeeAccount(){
-  
+    public boolean updateAccount(){
+          return true;
+
     }
-     @Override
-     public void deleteEmployeeAccount(){
-         
-     }
+    
+    @Override
+     public boolean removeAccount(){
+        return true;
+    }
     
 }
