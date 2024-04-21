@@ -21,6 +21,14 @@ public class Category implements ICategorySubject{
         
     }
 
+    public void setSuccessor(Category Successor){
+        this.Successor = Successor;
+    }
+    
+    public void handleCategory(){
+        System.err.println("This Function is Not Available For This Class");
+    }
+    
     @Override
     public void addObserver(ICategoryObserver observer) {
         observers.add(observer);
