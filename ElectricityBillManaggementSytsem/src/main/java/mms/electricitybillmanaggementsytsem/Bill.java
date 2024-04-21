@@ -23,27 +23,27 @@ public class Bill {
         
     }
 
-    //public ElectricityUsage getElectricityUsage() {
-    //    return ElectricityUsage;
-    //}
+    /*public ElectricityUsage getElectricityUsage() {
+        return ElectricityUsage;
+    }
 
-    //public void setElectricityUsage(ElectricityUsage ElectricityUsage) {
-      //  this.ElectricityUsage = ElectricityUsage;
-    //}
+    /*public void setElectricityUsage(ElectricityUsage ElectricityUsage) {
+        this.ElectricityUsage = ElectricityUsage;
+    }
 
-    //public IBillStatus getStatus() {
-     //   return status;
-    //}
+    /*public IBillStatus getStatus() {
+       return status;
+    }
 
-    //public void setStatus(IBillStatus status) {
-      //  this.status = status;
-    //}
+    /* public void setStatus(IBillStatus status) {
+        this.status = status;
+    }
 
-    //public Payment getPayment() {
-      //  return Payment;
-    //}
+    /8public Payment getPayment() {
+        return Payment;
+    }
 
-    //public void setPayment(Payment Payment) {
-      //  this.Payment = Payment;
-    //}   
+    /*public void setPayment(Payment Payment) {
+        this.Payment = Payment;
+    }   
 }
