@@ -23,6 +23,18 @@ public class Employee extends User implements ICategoryObserver{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
+    @Override
+    public void createEmployeeAccount(){
+        
+    }
     
+    @Override
+    public void updateEmployeeAccount(){
+  
+    }
+     @Override
+     public void deleteEmployeeAccount(){
+         
+     }
     
 }

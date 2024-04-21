@@ -8,5 +8,5 @@ package mms.electricitybillmanaggementsytsem;
 public interface ICategoryObserver {
     
     public void updateCategoryNotification(String str);
-    
+
 }
