@@ -5,7 +5,7 @@ package mms.electricitybillmanaggementsytsem;
  *
  * @author Nashwa 220488
  */
-public class Employee implements ICategoryObserver{
+public class Employee extends User implements ICategoryObserver{
     
     public String shift;
     //Emloyee implements IElecTechReqR();
