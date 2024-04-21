@@ -17,7 +17,7 @@ public class Employee extends User implements ICategoryObserver{
     public void setShift(String shift) {
         this.shift = shift;
     }
-
+    
     @Override
     public void updateCategoryNotificstion(String str) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
