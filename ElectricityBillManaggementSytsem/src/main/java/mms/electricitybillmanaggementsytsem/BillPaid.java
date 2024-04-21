@@ -8,6 +8,11 @@ package mms.electricitybillmanaggementsytsem;
  *
  * @author dell
  */
-public class BillPaid {
+public class BillPaid implements IBillStatus{
     
+    @Override
+    public void viewBill()
+    {
+        
+    }
 }
