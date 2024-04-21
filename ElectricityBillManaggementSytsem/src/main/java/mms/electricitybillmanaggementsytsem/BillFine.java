@@ -10,7 +10,7 @@ package mms.electricitybillmanaggementsytsem;
  */
 public class BillFine implements IBillStatus{
  
-    private Payment payment;
+    // private Payment payment;
     
     @Override
     public void viewBill()
