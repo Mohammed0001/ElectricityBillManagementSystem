@@ -43,7 +43,7 @@ public class Bill {
     public Payment getPayment() {
         return Payment;
     }
-
+    
     public void setPayment(Payment Payment) {
         this.Payment = Payment;
     } 
