@@ -8,5 +8,7 @@ package mms.electricitybillmanaggementsytsem;
 public interface ICategoryObserver {
     
     public void updateCategoryNotificstion(String str);
-    
+    public void createEmployeeAccount();
+    public void updateEmployeeAccount();
+    public void deleteEmployeeAccount();
 }
