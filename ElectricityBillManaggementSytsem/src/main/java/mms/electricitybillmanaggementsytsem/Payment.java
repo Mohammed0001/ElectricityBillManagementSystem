@@ -15,7 +15,8 @@ package mms.electricitybillmanaggementsytsem;
     private int value;
     private double discount;
     private String date;
-    private IPayBill payBill;
+    @Override
+    public abstract void PayBill(double amount);
 
     public int getTransactionNumber() {
         return transactionNumber;
@@ -38,6 +39,7 @@ package mms.electricitybillmanaggementsytsem;
     }
 
     public IPayBill getPayBill() {
+        IPayBill payBill = null;
         return payBill;
     }
 
@@ -62,18 +64,17 @@ package mms.electricitybillmanaggementsytsem;
     }
 
     public void setPayBill(IPayBill payBill) {
-        this.payBill = payBill;
     }
 
     public abstract void payBill(double amount);
     
     public void viewInvoice() {
-        // implementation
+       
     }
     
     public void addDiscount(double discount) {
-        // implementation
+        
     }
     
-    // getters and setters for all properties
+   
 }

@@ -8,7 +8,7 @@ package mms.electricitybillmanaggementsytsem;
  *
  * @author Nada220961
  */
-public class Cash extends Payment {
+public class Cash implements IPayBill {
     private double amount;
 
     public void setAmount(double amount) {
@@ -19,11 +19,7 @@ public class Cash extends Payment {
         return amount;
     }
 
-    @Override
-    public void payBill(double amount) {
-       
-    }
-    
+   
     
 
     @Override

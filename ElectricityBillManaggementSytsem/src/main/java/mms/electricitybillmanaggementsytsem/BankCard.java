@@ -8,8 +8,8 @@ package mms.electricitybillmanaggementsytsem;
  *
  * @author Nada220961
  */
-public class BankCard implements IPayBill {
-    private String cardNumber;
+public class BankCard implements IPayBill { 
+    private String cardNumber;// mn electricityusgae
 
     public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
