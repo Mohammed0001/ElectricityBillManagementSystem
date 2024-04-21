@@ -8,8 +8,8 @@ package mms.electricitybillmanaggementsytsem;
  *
  * @author dell
  */
-public class BillPaid implements IBillStatus{
-    
+public class BillFine implements IBillStatus{
+ 
     // private Payment payment;
     
     @Override

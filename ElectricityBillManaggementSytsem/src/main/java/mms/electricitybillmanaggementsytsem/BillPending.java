@@ -8,7 +8,7 @@ package mms.electricitybillmanaggementsytsem;
  *
  * @author dell
  */
-public class BillPaid implements IBillStatus{
+public class BillPending implements IBillStatus{
     
     // private Payment payment;
     
