@@ -9,5 +9,6 @@ package mms.electricitybillmanaggementsytsem;
  * @author dell
  */
 public interface IBillStatus {
-    public static void viewBill();
+    
+    public void viewBill();
 }
