@@ -22,28 +22,30 @@ public class Bill {
     {
         
     }
-
-    /*public ElectricityUsage getElectricityUsage() {
+    
+    /*
+    public ElectricityUsage getElectricityUsage() {
         return ElectricityUsage;
     }
 
-    /*public void setElectricityUsage(ElectricityUsage ElectricityUsage) {
+    public void setElectricityUsage(ElectricityUsage ElectricityUsage) {
         this.ElectricityUsage = ElectricityUsage;
     }
 
-    /*public IBillStatus getStatus() {
+    public IBillStatus getStatus() {
        return status;
     }
 
-    /* public void setStatus(IBillStatus status) {
+    public void setStatus(IBillStatus status) {
         this.status = status;
     }
 
-    /8public Payment getPayment() {
+    public Payment getPayment() {
         return Payment;
     }
 
-    /*public void setPayment(Payment Payment) {
+    public void setPayment(Payment Payment) {
         this.Payment = Payment;
-    }   
+    } 
+*/
 }
