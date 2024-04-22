@@ -10,11 +10,25 @@ package mms.electricitybillmanaggementsytsem;
  */
 public class BillPending implements IBillStatus{
     
-    // private Payment payment;
+    private Payment payment;
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
     
     @Override
     public void viewBill()
     {
         
     }
+
+    @Override
+    public String toString() {
+        return "BillPending{" + "payment=" + payment + '}';
+    }
+    
 }
