@@ -4,26 +4,36 @@
  */
 package mms.electricitybillmanaggementsytsem;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Nada220961
  */
 
-    public abstract class Payment implements IPayBill {
+    public class Payment {
     private int transactionNumber;
-    private String type;
     private int value;
     private double discount;
     private String date;
-    @Override
-    public abstract void PayBill(double amount);
+    private IPayBill type;
+    
+    
+    
+    public void setPaymentType(IPayBill type){
+        this.type = type;
+    }
+    
+    public void payBill(){
+        type.PayBill(value);
+    }
 
     public int getTransactionNumber() {
         return transactionNumber;
-    }
-
-    public String getType() {
-        return type;
     }
 
     public int getValue() {
@@ -38,17 +48,9 @@ package mms.electricitybillmanaggementsytsem;
         return date;
     }
 
-    public IPayBill getPayBill() {
-        IPayBill payBill = null;
-        return payBill;
-    }
 
     public void setTransactionNumber(int transactionNumber) {
         this.transactionNumber = transactionNumber;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public void setValue(int value) {
@@ -63,13 +65,20 @@ package mms.electricitybillmanaggementsytsem;
         this.date = date;
     }
 
-    public void setPayBill(IPayBill payBill) {
-    }
+    public ArrayList<Payment> viewInvoices() {
+        ArrayList<Payment> payments =  new ArrayList<>();
+        ResultSet rs = Database.getInsatnce().selectStmt("SELECT * FROM users;");
 
-    public abstract void payBill(double amount);
-    
-    public void viewInvoice() {
-       
+        try {
+            while(rs.next()){
+                Payment p = new Payment();
+                payments.add(p);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Payment.class.getName()).log(Level.SEVERE, null, ex);
+        }
+             
+        return payments;
     }
     
     public void addDiscount(double discount) {
