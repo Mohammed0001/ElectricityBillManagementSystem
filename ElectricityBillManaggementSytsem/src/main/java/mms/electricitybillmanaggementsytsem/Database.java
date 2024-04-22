@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 public class Database {
     //private String url = "jdbc:sqlserver://Mohammeds-lapto;databaseName=ElecBillMangament";
-    private String url = "jdbc:mysql://localhost:3306/treca";
+    private String url = "jdbc:mysql://localhost:3306/ElecBillMangament";
     private String user = "root";
     private String passwordd = "";
     private Connection connection;
