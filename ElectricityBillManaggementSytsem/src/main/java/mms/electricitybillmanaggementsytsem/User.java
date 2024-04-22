@@ -58,7 +58,8 @@ public class User {
     }
     
     public boolean createAccount(){
-        return true;
+        String sqlStmt = "INSERT INTO `users` (name , username , password , type) VALUES ('" +this.name+ "' ,'" +this.username+ "', '" +this.password+ "' , 'user')";
+        return Database.getInsatnce().insertStmt(sqlStmt);
     }
     
     public boolean removeAccount(){
