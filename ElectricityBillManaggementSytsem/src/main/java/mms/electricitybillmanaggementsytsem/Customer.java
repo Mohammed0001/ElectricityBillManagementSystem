@@ -20,7 +20,7 @@ public class Customer extends User implements ICategoryObserver{
     
 
     @Override
-    public void updateCategoryNotificstion(String str) {
+    public void updateCategoryNotification(String str) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
