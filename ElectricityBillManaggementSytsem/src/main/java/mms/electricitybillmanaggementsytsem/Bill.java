@@ -10,8 +10,8 @@ package mms.electricitybillmanaggementsytsem;
  */
 public class Bill {
     //private ElectricityUsage ElectricityUsage;
-    //private IBillStatus status;
-    //private Payment Payment;
+    private IBillStatus status;
+    private Payment Payment;
     
     public void calculateBill()
     {
@@ -31,7 +31,7 @@ public class Bill {
     public void setElectricityUsage(ElectricityUsage ElectricityUsage) {
         this.ElectricityUsage = ElectricityUsage;
     }
-
+    */
     public IBillStatus getStatus() {
        return status;
     }
@@ -47,5 +47,4 @@ public class Bill {
     public void setPayment(Payment Payment) {
         this.Payment = Payment;
     } 
-*/
 }
