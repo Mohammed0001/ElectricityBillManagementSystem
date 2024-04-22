@@ -1,6 +1,11 @@
 
 package mms.electricitybillmanaggementsytsem;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Mohammed 227996
@@ -30,14 +35,17 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+        updateAccount();
     }
 
     public String getUsername() {
         return username;
+        
     }
 
     public void setUsername(String username) {
         this.username = username;
+        updateAccount();
     }
 
     public String getPassword() {
@@ -46,14 +54,30 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+        updateAccount();
     }
 
     
-    public User login(){
-        return this;
+    public static User login(String username , String password){
+        String sqlStmt = "SELECT * FROM `users` WHERE username = '"+ username + "' AND password = '" + password +"';"; 
+        ResultSet rs = Database.getInsatnce().selectStmt(sqlStmt);
+        try {
+            while (rs.next()){
+                if (rs.getString("type").equals("employee")){
+                    return new Employee();
+                }else if(rs.getString("type").equals("customer")){
+                    return new Customer();
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
   
-    public User manageLoginCredentials(){
+    public User manageLoginCredentials(String username , String Password){
+        setUsername(username);
+        setPassword(Password);
         return this;
     }
     
@@ -63,11 +87,13 @@ public class User {
     }
     
     public boolean removeAccount(){
-        return true;
+        String sqlStmt = "DELETE FROM `users` WHERE id = " + this.id;
+        return Database.getInsatnce().deleteStmt(sqlStmt);
     }
     
     public boolean updateAccount(){
-        return true;
+        String sqlStmt = "UPDATE `users` SET `name` = '" + this.name +"' , `username` = '" + this.username +"' , `password` =  '"+this.password+"' WHERE id = " + this.id ;
+        return Database.getInsatnce().updateStmt(sqlStmt);
     }
     
     @Override
@@ -75,5 +101,4 @@ public class User {
         return "User{" + "id=" + id + ", name=" + name + ", username=" + username + ", password=" + password + '}';
     }
         
-
 }   

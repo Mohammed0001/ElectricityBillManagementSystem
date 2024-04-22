@@ -10,6 +10,12 @@ public class Employee extends User implements ICategoryObserver{
     public String shift;
     //Emloyee implements IElecTechReqR();
 
+    public Employee() {
+        System.out.println("mms.electricitybillmanaggementsytsem.Employee.<init>()");
+    }
+
+    
+    
     public String getShift() {
         return shift;
     }

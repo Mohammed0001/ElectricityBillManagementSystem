@@ -16,6 +16,8 @@ import java.util.logging.Logger;
 public class ElectricityBillManaggementSytsem {
     
     public static void main(String[] args) {
+       new login().setVisible(true);
+
         Database.getInsatnce() ;
 //        User u = new User();
 //        u.setName("Karim");
