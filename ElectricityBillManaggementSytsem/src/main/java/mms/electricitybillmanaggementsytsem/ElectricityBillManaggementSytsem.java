@@ -16,16 +16,7 @@ public class ElectricityBillManaggementSytsem {
     
     public static void main(String[] args) {
         Database.getInsatnce() ;
-        ResultSet rs = Database.getInsatnce().selectStmt("SELECT * FROM users;");
-        try {
-            
-            while(rs.next()){
-                System.out.println(rs.getString("name"));
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ElectricityBillManaggementSytsem.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
         System.out.println("Susscess!! in mms.electricitybillmanaggementsytsem.ElectricityBillManaggementSytsem.main()");
     }
 }
