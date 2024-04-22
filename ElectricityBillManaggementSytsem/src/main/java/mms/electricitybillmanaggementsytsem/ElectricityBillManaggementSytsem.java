@@ -16,7 +16,7 @@ public class ElectricityBillManaggementSytsem {
     
     public static void main(String[] args) {
         Database.getInsatnce() ;
-        ResultSet rs = Database.getInsatnce().selectStmt("SELECT * FROM users");
+        ResultSet rs = Database.getInsatnce().selectStmt("SELECT * FROM users;");
         try {
             
             while(rs.next()){
