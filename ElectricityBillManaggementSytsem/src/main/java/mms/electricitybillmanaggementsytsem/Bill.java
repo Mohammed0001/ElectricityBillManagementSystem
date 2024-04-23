@@ -9,7 +9,7 @@ package mms.electricitybillmanaggementsytsem;
  * @author dell
  */
 public class Bill {
-    //private ElectricityUsage ElectricityUsage;
+    private ElectricityUsage ElectricityUsage;
     private IBillStatus status;
     private Payment Payment;
     
@@ -23,7 +23,7 @@ public class Bill {
         
     }
     
-    /*
+    
     public ElectricityUsage getElectricityUsage() {
         return ElectricityUsage;
     }
@@ -31,7 +31,7 @@ public class Bill {
     public void setElectricityUsage(ElectricityUsage ElectricityUsage) {
         this.ElectricityUsage = ElectricityUsage;
     }
-    */
+    
     public IBillStatus getStatus() {
        return status;
     }
@@ -47,4 +47,10 @@ public class Bill {
     public void setPayment(Payment Payment) {
         this.Payment = Payment;
     } 
+
+    @Override
+    public String toString() {
+        return "Bill{" + "ElectricityUsage=" + ElectricityUsage + ", status=" + status + ", Payment=" + Payment + '}';
+    }
+    
 }
