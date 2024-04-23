@@ -86,7 +86,7 @@ public class User {
                     return new Technician(0, username, username, password);
                 }
                 else if(rs.getString("type").equals("manager")){
-                    return new Manager(0, username, username, password);
+                    return new Manager(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
                 }
             }
         } catch (SQLException ex) {
