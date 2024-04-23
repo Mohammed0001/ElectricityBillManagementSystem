@@ -14,4 +14,9 @@ public class Technician extends User{
         super(id, name, username, password);
     }
     
+    @Override
+    public void openHome(){
+        new TechnicianGUI(this).setVisible(true);
+    }
+    
 }

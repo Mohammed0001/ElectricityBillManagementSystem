@@ -49,4 +49,9 @@ public class Employee extends User implements ICategoryObserver{
         return Database.getInsatnce().deleteStmt(sqlStmt);
     }
      
+     @Override
+     public void openHome(){
+         new EmployeeGUI(this).setVisible(true);
+     }
+     
 }

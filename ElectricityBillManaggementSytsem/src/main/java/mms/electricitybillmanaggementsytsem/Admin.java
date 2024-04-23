@@ -14,4 +14,9 @@ public class Admin extends User {
         super(id, name, username, password);
     }
     
+    @Override 
+    public void openHome(){
+        new AdminGUI(this).setVisible(true);
+    }
+    
 }
