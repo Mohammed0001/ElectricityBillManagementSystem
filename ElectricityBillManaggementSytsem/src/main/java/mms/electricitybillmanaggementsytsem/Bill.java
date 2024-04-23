@@ -6,7 +6,7 @@ package mms.electricitybillmanaggementsytsem;
 
 /**
  *
- * @author dell
+ * @author Karim 219226s
  */
 public class Bill {
     private int id;
