@@ -64,9 +64,21 @@ public class User {
         try {
             while (rs.next()){
                 if (rs.getString("type").equals("admin")){
-                    return new Employee();
+                    return new Admin();
                 }else if(rs.getString("type").equals("customer")){
                     return new Customer();
+                }
+                else if(rs.getString("type").equals("employee")){
+                    return new Employee();
+                }
+                else if(rs.getString("type").equals("utc")){
+                    return new UtilityCompany();
+                }
+                else if(rs.getString("type").equals("tech")){
+                    return new Technician();
+                }
+                else if(rs.getString("type").equals("manager")){
+                    return new Manager();
                 }
             }
         } catch (SQLException ex) {

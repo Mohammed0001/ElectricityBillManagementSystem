@@ -15,9 +15,7 @@ import java.util.logging.Logger;
  * 
  **/
     
-    //    private String url = "jdbc:mysql://sql11.freesqldatabase.com:3306/sql11701057";
-    //    private String user = "sql11701057";
-//    private String passwordd = "cB58VxkATJ";
+ 
 
 //private String url = "jdbc:mysql://localhost:3306/ElecBillMangament";
 //    private String user = "root";
