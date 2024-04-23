@@ -1,6 +1,12 @@
 
 package mms.electricitybillmanaggementsytsem;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Kenzy 221945
@@ -10,10 +16,40 @@ public class ElectricityTechnicalRequest implements IElectricityTechnicalRequest
     private String title;
     private String date;
     private String description;
+    private String feedback;
+    private String status;
+
+    public ElectricityTechnicalRequest(int id, String title, String date, String description, String feedback, String status) {
+        this.id = id;
+        this.title = title;
+        this.date = date;
+        this.description = description;
+        this.feedback = feedback;
+        this.status = status;
+    }
+    
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
+        manageElectricityTechnicalSupportRequest();
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+        manageElectricityTechnicalSupportRequest();
+    }
 
     @Override
     public int getId() {
-        return id;
+        return id; 
     }
 
     public void setId(int id) {
@@ -47,7 +83,35 @@ public class ElectricityTechnicalRequest implements IElectricityTechnicalRequest
         this.description = description;
     }
     
-    public void requestElectricityTechnicalSupport(){
+    public boolean requestElectricityTechnicalSupport(int requesterID){
+        String sqlStmt = "INSERT INTO `electricitytechnicalrequest` (title , date , description , feedback , status , requesterID) VALUES ('" +this.title+ "', '" +this.date+ "' ,'" +this.description+ "', '" +this.feedback+ "', '" +this.status+ "', '" +requesterID+ "')";
+        return Database.getInsatnce().insertStmt(sqlStmt);
+       
+    }
+    
+  
+    public ArrayList<ElectricityTechnicalRequest> viewElectricityTechnicalSupportRequest(){
+        ArrayList <ElectricityTechnicalRequest> requests = new ArrayList<>();
+        String sqlStmt = "SELECT * FROM `electricitytechnicalrequest`;"; 
+        ResultSet rs = Database.getInsatnce().selectStmt(sqlStmt);
+        try {
+            while (rs.next()){
+                requests.add(new ElectricityTechnicalRequest(rs.getInt("id"), rs.getString("title"), rs.getString("date"),rs.getString("description") ,rs.getString("feedback"),rs.getString("status")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return requests;        
+    }
+    
+    public boolean manageElectricityTechnicalSupportRequest(){
+         String sqlStmt = "UPDATE `electricitytechnicalrequest` SET `status` = '" + this.status +"' , `feedback` = '" + this.feedback +"' WHERE id = " + this.id ;
+        return Database.getInsatnce().updateStmt(sqlStmt);
+    }
+    
+     public boolean deleteElectricityTechnicalSupportRequest(){
         
+         String sqlStmt = "DELETE FROM `electricitytechnicalrequest` WHERE id = " + this.id;
+        return Database.getInsatnce().deleteStmt(sqlStmt);
     }
 }

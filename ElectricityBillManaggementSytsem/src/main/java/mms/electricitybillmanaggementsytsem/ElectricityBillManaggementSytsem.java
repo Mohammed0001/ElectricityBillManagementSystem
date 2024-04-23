@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 public class ElectricityBillManaggementSytsem {
     
     public static void main(String[] args) {
+<<<<<<< HEAD
        new login().setVisible(true);
        
 //              BankCardForm bankCardForm = new BankCardForm();
@@ -55,6 +56,13 @@ public class ElectricityBillManaggementSytsem {
     
     
  
+=======
+        new login().setVisible(true);
+        Database.getInsatnce() ;
+        System.out.println("Susscess!! in mms.electricitybillmanaggementsytsem.ElectricityBillManaggementSytsem.main()");
+    }
+    
+>>>>>>> cb459f0dc2592abd3f72960dd08769c1c3a1715e
 }
 
 

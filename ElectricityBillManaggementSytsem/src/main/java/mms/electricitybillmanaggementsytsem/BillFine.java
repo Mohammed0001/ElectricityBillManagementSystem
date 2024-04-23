@@ -6,11 +6,12 @@ package mms.electricitybillmanaggementsytsem;
 
 /**
  *
- * @author dell
+ * @author Karim 219226
  */
 public class BillFine implements IBillStatus{
  
     private Payment payment;
+    private double fine;
 
     public Payment getPayment() {
         return payment;
@@ -19,6 +20,15 @@ public class BillFine implements IBillStatus{
     public void setPayment(Payment payment) {
         this.payment = payment;
     }
+
+    public double getFine() {
+        return fine;
+    }
+
+    public void setFine(double fine) {
+        this.fine = fine;
+    }
+    
     
     @Override
     public void viewBill()

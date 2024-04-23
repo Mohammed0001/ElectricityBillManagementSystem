@@ -10,12 +10,11 @@ public class Employee extends User implements ICategoryObserver{
     public String shift;
     //Emloyee implements IElecTechReqR();
 
-    public Employee() {
-        System.out.println("mms.electricitybillmanaggementsytsem.Employee.<init>()");
+    public Employee(int id, String name, String username, String password , String shift) {
+        super(id, name, username, password);
+        this.shift = shift;
     }
 
-    
-    
     public String getShift() {
         return shift;
     }
@@ -31,18 +30,28 @@ public class Employee extends User implements ICategoryObserver{
     
     @Override
     public boolean createAccount(){
-        return true;
+        super.createAccount();
+        String sqlStmt = "INSERT INTO `employee` (userID , shift) VALUES ('" +super.getId()+ "' ,'" +this.shift+ "')";
+        return Database.getInsatnce().insertStmt(sqlStmt);
     }
     
     @Override
     public boolean updateAccount(){
-          return true;
-
+        super.updateAccount();
+        String sqlStmt = "UPDATE 'employee' SET `shift` = '" + this.shift +" WHERE userID = " + super.getId()+";)";
+        return Database.getInsatnce().updateStmt(sqlStmt);
     }
     
     @Override
      public boolean removeAccount(){
-        return true;
+         super.removeAccount();
+         String sqlStmt = "DELETE FROM 'employee' WHERE userID = " + super.getId()+";";
+        return Database.getInsatnce().deleteStmt(sqlStmt);
     }
-    
+     
+     @Override
+     public void openHome(){
+         new EmployeeGUI(this).setVisible(true);
+     }
+     
 }

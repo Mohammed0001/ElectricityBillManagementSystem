@@ -17,9 +17,13 @@ public class User {
     private String password;
     //    private ISystemReport SystemReport;
 
-    public User() {
+    public User(int id, String name, String username, String password) {
+        this.id = id;
+        this.name = name;
+        this.username = username;
+        this.password = password;
     }
-    
+
     
     public int getId() {
         return id;
@@ -56,6 +60,10 @@ public class User {
         this.password = password;
         updateAccount();
     }
+    
+    public void openHome(){
+        
+    }
 
     
     public static User login(String username , String password){
@@ -63,10 +71,22 @@ public class User {
         ResultSet rs = Database.getInsatnce().selectStmt(sqlStmt);
         try {
             while (rs.next()){
-                if (rs.getString("type").equals("employee")){
-                    return new Employee();
+                if (rs.getString("type").equals("admin")){
+                    return new Admin(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
                 }else if(rs.getString("type").equals("customer")){
-                    return new Customer();
+                    return new Customer(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
+                }
+                else if(rs.getString("type").equals("employee")){
+                    return new Employee(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password") , "");
+                }
+                else if(rs.getString("type").equals("utc")){
+                    return new UtilityCompany(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
+                }
+                else if(rs.getString("type").equals("tech")){
+                   return new Technician(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
+  }
+                else if(rs.getString("type").equals("manager")){
+                    return new Manager(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
                 }
             }
         } catch (SQLException ex) {

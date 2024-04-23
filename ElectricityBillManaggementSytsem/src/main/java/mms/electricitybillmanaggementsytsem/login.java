@@ -110,6 +110,7 @@ public class login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please! Enter VALID LOGIN CREDINTIALS! then try again", "INVALID CREDINTIALS!", JOptionPane.PLAIN_MESSAGE);
         }
         else{
+            newUser.openHome();
             this.setVisible(false);
         }
     }//GEN-LAST:event_loginBtnActionPerformed

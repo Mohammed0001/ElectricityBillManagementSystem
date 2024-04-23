@@ -6,7 +6,7 @@ package mms.electricitybillmanaggementsytsem;
 
 /**
  *
- * @author dell
+ * @author Karim 219226
  */
 public class BillPending implements IBillStatus{
     
