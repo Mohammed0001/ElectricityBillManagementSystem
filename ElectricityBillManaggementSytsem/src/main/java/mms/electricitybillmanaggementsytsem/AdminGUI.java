@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author mabou
+ * @author Karim 219226
  */
 public class AdminGUI extends javax.swing.JFrame {
 
