@@ -63,10 +63,22 @@ public class User {
         ResultSet rs = Database.getInsatnce().selectStmt(sqlStmt);
         try {
             while (rs.next()){
-                if (rs.getString("type").equals("employee")){
-                    return new Employee();
+                if (rs.getString("type").equals("admin")){
+                    return new Admin();
                 }else if(rs.getString("type").equals("customer")){
                     return new Customer();
+                }
+                else if(rs.getString("type").equals("employee")){
+                    return new Employee();
+                }
+                else if(rs.getString("type").equals("utc")){
+                    return new UtilityCompany();
+                }
+                else if(rs.getString("type").equals("tech")){
+                    return new Technician();
+                }
+                else if(rs.getString("type").equals("manager")){
+                    return new Manager();
                 }
             }
         } catch (SQLException ex) {
