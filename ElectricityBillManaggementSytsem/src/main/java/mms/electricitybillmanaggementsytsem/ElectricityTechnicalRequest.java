@@ -13,7 +13,7 @@ public class ElectricityTechnicalRequest implements IElectricityTechnicalRequest
 
     @Override
     public int getId() {
-        return id;
+        return id; 
     }
 
     public void setId(int id) {
@@ -48,6 +48,15 @@ public class ElectricityTechnicalRequest implements IElectricityTechnicalRequest
     }
     
     public void requestElectricityTechnicalSupport(){
+        
+        
+    }
+    
+    public void viewElectricityTechnicalSupportRequest(){
+        
+    }
+    
+    public void manageElectricityTechnicalSupportRequest(){
         
     }
 }
