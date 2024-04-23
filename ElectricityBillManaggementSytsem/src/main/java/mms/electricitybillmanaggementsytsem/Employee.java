@@ -15,7 +15,6 @@ public class Employee extends User implements ICategoryObserver{
         this.shift = shift;
     }
 
-
     public String getShift() {
         return shift;
     }
