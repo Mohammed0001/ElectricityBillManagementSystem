@@ -50,7 +50,4 @@ public class Employee extends User implements ICategoryObserver{
         return Database.getInsatnce().deleteStmt(sqlStmt);
     }
      
-      
-     
-    
 }
