@@ -9,7 +9,8 @@ package mms.electricitybillmanaggementsytsem;
  * @author dell
  */
 public class Bill {
-    private ElectricityUsage ElectricityUsage;
+    private int id;
+    private ElectricityUsageID ElectricityUsage;
     private IBillStatus status;
     private Payment Payment;
     
@@ -22,13 +23,20 @@ public class Bill {
     {
         
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
-    
-    public ElectricityUsage getElectricityUsage() {
+    public ElectricityUsageID getElectricityUsage() {
         return ElectricityUsage;
     }
 
-    public void setElectricityUsage(ElectricityUsage ElectricityUsage) {
+    public void setElectricityUsage(ElectricityUsageID ElectricityUsage) {
         this.ElectricityUsage = ElectricityUsage;
     }
     
@@ -46,11 +54,25 @@ public class Bill {
     
     public void setPayment(Payment Payment) {
         this.Payment = Payment;
-    } 
-
+    }
+    
+    public boolean createBill(){
+        String sqlStmt = "INSERT INTO `Bill` (status , ElectricityUsageID , Payment) VALUES ('" +this.status+ "' ,'" +this.ElectricityUsage+ "', '" +this.Payment+ "' , 'Bill')";
+        return Database.getInsatnce().insertStmt(sqlStmt);
+    }
+    
+    public boolean removeBill(){
+        String sqlStmt = "DELETE FROM `Bill` WHERE id = " + this.id;
+        return Database.getInsatnce().deleteStmt(sqlStmt);
+    }
+    
+    public boolean updateBill(){
+        String sqlStmt = "UPDATE `Bill` SET `status` = '" + this.status +"' , `ElectricityUsageID` = '" + this.ElectricityUsage.getId() +"' ,`Payment` = '" + this.Payment +"', WHERE id = " + this.id ;
+        return Database.getInsatnce().updateStmt(sqlStmt);
+    }
+    
     @Override
     public String toString() {
         return "Bill{" + "ElectricityUsage=" + ElectricityUsage + ", status=" + status + ", Payment=" + Payment + '}';
     }
-    
 }
