@@ -21,8 +21,8 @@ public class ElectricityBillManaggementSytsem {
     public static void main(String[] args) {
        new login().setVisible(true);
        
-              BankCardForm bankCardForm = new BankCardForm();
-     bankCardForm.setVisible(true);
+//              BankCardForm bankCardForm = new BankCardForm();
+//     bankCardForm.setVisible(true);
 
 // InstaPayform  InstaPayform = new InstaPayform ();
 //        InstaPayform .setVisible(true);
