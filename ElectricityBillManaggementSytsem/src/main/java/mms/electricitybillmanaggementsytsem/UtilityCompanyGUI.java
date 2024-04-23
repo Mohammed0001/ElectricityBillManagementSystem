@@ -13,12 +13,12 @@ import javax.swing.JOptionPane;
  */
 public class UtilityCompanyGUI extends javax.swing.JFrame {
 
-    private Manager manager ;
+    private UtilityCompany utilityCompany ;
     
-    public UtilityCompanyGUI(Manager manager ) {
-        this.manager = manager;
+    public UtilityCompanyGUI(UtilityCompany utilityCompany) {
+        this.utilityCompany = utilityCompany;
         initComponents();
-       jLabel1.setText("Welcome! Manager, " + manager.getName());        
+       jLabel1.setText("Welcome! , " + utilityCompany.getName());        
     }
 
 
@@ -134,7 +134,8 @@ public class UtilityCompanyGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        new ManageLoginCredentialsGUI(utilityCompany).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
