@@ -3,6 +3,7 @@ package mms.electricitybillmanaggementsytsem;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -102,4 +103,20 @@ public class Database {
         }
         return false;
     }
+// nada
+
+//    public void saveBankCard(BankCard bankCard) throws SQLException {
+//    String query = "INSERT INTO bank_cards (card_number, cvv, expiry_date, card_holder_name) VALUES (1 2, 3, 4)";
+//        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+//            stmt.setDouble(1, bankCard.getCardNumber());
+//            stmt.setDouble(2, bankCard.getcvv());
+//            stmt.setString(3, bankCard.getExpiryDate());
+//            stmt.setString(4, bankCard.getCardHolderName());
+//            stmt.executeUpdate();
+//        }
+//}
+  
+   
 }
+
+

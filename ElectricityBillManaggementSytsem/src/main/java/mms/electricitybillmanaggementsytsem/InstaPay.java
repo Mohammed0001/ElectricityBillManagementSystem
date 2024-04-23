@@ -4,44 +4,56 @@
  */
 package mms.electricitybillmanaggementsytsem;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Nada220961
  */
 public class InstaPay implements IPayBill {
     private double amount;
-    private String instaPayHandle;
     private double paymentFees;
+    private final String instaPayHandle;
+
+    public InstaPay(String instaPayHandle) {
+        this.instaPayHandle = instaPayHandle;
+    }
 
     public double getAmount() {
         return amount;
-    }
-
-    public String getInstaPayHandle() {
-        return instaPayHandle;
     }
 
     public double getPaymentFees() {
         return paymentFees;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public String getInstaPayHandle() {
+        return instaPayHandle;
     }
 
-    public void setInstaPayHandle(String instaPayHandle) {
-        this.instaPayHandle = instaPayHandle;
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public void setPaymentFees(double paymentFees) {
         this.paymentFees = paymentFees;
     }
-
-  
     
-
+    
+    
+    
+    
     @Override
     public void PayBill(double amount) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        //to be implemented
+    }
+    
+    public static boolean createAccount(String ipHandle){
+        String sqlStmt = "INSERT INTO `instapay` (instapayhandle, amount) VALUES ('" + ipHandle + "', '1000')";
+        boolean res = Database.getInsatnce().insertStmt(sqlStmt);
+        return res;
     }
 }

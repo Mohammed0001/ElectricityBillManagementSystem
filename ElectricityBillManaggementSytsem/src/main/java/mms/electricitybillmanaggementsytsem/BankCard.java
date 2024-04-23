@@ -10,6 +10,8 @@ package mms.electricitybillmanaggementsytsem;
  */
 public class BankCard implements IPayBill { 
     private String cardNumber;// mn electricityusgae
+    private int cvv;
+    private String cardholdername; 
 
     public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
@@ -30,6 +32,11 @@ public class BankCard implements IPayBill {
     public double getAmount() {
         return amount;
     }
+    
+     public int getcvv() {
+        
+        return cvv;
+    }
 
     public double getPaymentFees() {
         return paymentFees;
@@ -38,12 +45,31 @@ public class BankCard implements IPayBill {
     private double paymentFees;
 
     public void payBill(double amount) {
-        
+     throw new UnsupportedOperationException("Not supported yet.");
     }
     
     
+    
+
+    private String expirydate;
+    String getExpiryDate() {
+        return expirydate;
+    }
+
+    String getCardHolderName() {
+        return cardholdername;
+    }
+
     @Override
     public void PayBill(double amount) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+      public static boolean createAccount(String CardNumber ,int cvv, String cardholdername){
+        String sqlStmt = "INSERT INTO `bankcard` (cardnumber, cvv, cardholdername) VALUES ('" + CardNumber + "','" + cvv + "','" + cardholdername + "')";
+        boolean res = Database.getInsatnce().insertStmt(sqlStmt);
+        return res;
+    }
+
+  
 }
