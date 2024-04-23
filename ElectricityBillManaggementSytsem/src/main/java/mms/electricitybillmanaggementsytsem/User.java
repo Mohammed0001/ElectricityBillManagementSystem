@@ -72,7 +72,7 @@ public class User {
         try {
             while (rs.next()){
                 if (rs.getString("type").equals("admin")){
-                    return new Admin();
+                    return new Admin(0, username, username, password);
                 }else if(rs.getString("type").equals("customer")){
                     return new Customer(0, username, username, password);
                 }
