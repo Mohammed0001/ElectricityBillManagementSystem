@@ -13,12 +13,12 @@ import javax.swing.JOptionPane;
  */
 public class TechnicianGUI extends javax.swing.JFrame {
 
-    private Manager manager ;
+    private Technician technician ;
     
-    public TechnicianGUI(Manager manager ) {
-        this.manager = manager;
+    public TechnicianGUI(Technician technician  ) {
+        this.technician = technician;
         initComponents();
-       jLabel1.setText("Welcome! Manager, " + manager.getName());        
+       jLabel1.setText("Welcome! Technician, " + technician.getName());        
     }
 
 

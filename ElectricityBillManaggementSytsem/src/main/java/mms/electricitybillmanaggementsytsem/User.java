@@ -72,19 +72,19 @@ public class User {
         try {
             while (rs.next()){
                 if (rs.getString("type").equals("admin")){
-                    return new Admin(0, username, username, password);
+                    return new Admin(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
                 }else if(rs.getString("type").equals("customer")){
-                    return new Customer(0, username, username, password);
+                    return new Customer(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
                 }
                 else if(rs.getString("type").equals("employee")){
-                    return new Employee(0, username, username, password, sqlStmt);
+                    return new Employee(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password") , "");
                 }
                 else if(rs.getString("type").equals("utc")){
-                    return new UtilityCompany(0, username, username, password);
+                    return new UtilityCompany(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
                 }
                 else if(rs.getString("type").equals("tech")){
-                    return new Technician(0, username, username, password);
-                }
+                   return new Technician(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
+  }
                 else if(rs.getString("type").equals("manager")){
                     return new Manager(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
                 }

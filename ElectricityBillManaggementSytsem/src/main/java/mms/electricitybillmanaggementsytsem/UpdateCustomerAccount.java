@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author Karim 219226
  */
-public class CreateAcount extends javax.swing.JFrame {
+public class UpdateCustomerAccount extends javax.swing.JFrame {
 
     /**
      * Creates new form login
      */
-    public CreateAcount() {
+    public UpdateCustomerAccount() {
         initComponents();
     }
 
@@ -48,11 +48,11 @@ public class CreateAcount extends javax.swing.JFrame {
         setName("loginFrame"); // NOI18N
         setResizable(false);
 
-        jLabel4.setText("Create account");
+        jLabel4.setText("Update Customer Account");
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Sign up");
+        jButton2.setText("Update");
 
         jLabel1.setText("Name:");
 

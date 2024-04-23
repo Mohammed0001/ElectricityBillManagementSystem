@@ -13,12 +13,12 @@ import javax.swing.JOptionPane;
  */
 public class CustomerGUI extends javax.swing.JFrame {
 
-    private Manager manager ;
+    private Customer customer ;
     
-    public CustomerGUI(Manager manager ) {
-        this.manager = manager;
+    public CustomerGUI(Customer customer ) {
+        this.customer = customer;
         initComponents();
-       jLabel1.setText("Welcome! Manager, " + manager.getName());        
+       jLabel1.setText("Welcome! " + customer.getName());        
     }
 
 
