@@ -17,9 +17,13 @@ public class User {
     private String password;
     //    private ISystemReport SystemReport;
 
-    public User() {
+    public User(int id, String name, String username, String password) {
+        this.id = id;
+        this.name = name;
+        this.username = username;
+        this.password = password;
     }
-    
+
     
     public int getId() {
         return id;
@@ -55,6 +59,10 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
         updateAccount();
+    }
+    
+    public void openHome(){
+        
     }
 
     
