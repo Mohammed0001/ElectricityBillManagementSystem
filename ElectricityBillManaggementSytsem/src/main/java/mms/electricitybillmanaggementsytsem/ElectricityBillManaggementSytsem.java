@@ -13,7 +13,9 @@ public class ElectricityBillManaggementSytsem {
     
     public static void main(String[] args) {
 
-       new login().setVisible(true);
+     new login().setVisible(true);
+
+  
 
         Database.getInsatnce() ;
         System.out.println("Susscess!! in mms.electricitybillmanaggementsytsem.ElectricityBillManaggementSytsem.main()");
