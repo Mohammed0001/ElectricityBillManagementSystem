@@ -13,11 +13,11 @@ import javax.swing.JOptionPane;
  */
 public class EmployeeGUI extends javax.swing.JFrame {
 
-    private Manager manager ;
+    private Employee employee ;
     
-    public EmployeeGUI(Manager manager ) {
-        this.manager = manager;
-        jLabel1.setText("Welcome! Manager, " + manager.getName());
+    public EmployeeGUI(Employee employee ) {
+        this.employee = employee;
+        jLabel1.setText("Welcome! Employee, " + employee.getName());
         initComponents();
         
     }
