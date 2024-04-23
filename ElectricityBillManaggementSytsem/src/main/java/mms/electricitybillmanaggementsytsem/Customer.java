@@ -10,6 +10,10 @@ import java.util.ArrayList;
 public class Customer extends User implements ICategoryObserver{
     private ArrayList<Bill> myBills ;
 
+    public Customer(int id, String name, String username, String password) {
+        super(id, name, username, password);
+    }
+
     public ArrayList<Bill> getMyBills() {
         return myBills;
     }

@@ -74,19 +74,19 @@ public class User {
                 if (rs.getString("type").equals("admin")){
                     return new Admin();
                 }else if(rs.getString("type").equals("customer")){
-                    return new Customer();
+                    return new Customer(0, username, username, password);
                 }
                 else if(rs.getString("type").equals("employee")){
-                    return new Employee();
+                    return new Employee(0, username, username, password, sqlStmt);
                 }
                 else if(rs.getString("type").equals("utc")){
-                    return new UtilityCompany();
+                    return new UtilityCompany(0, username, username, password);
                 }
                 else if(rs.getString("type").equals("tech")){
-                    return new Technician();
+                    return new Technician(0, username, username, password);
                 }
                 else if(rs.getString("type").equals("manager")){
-                    return new Manager();
+                    return new Manager(0, username, username, password);
                 }
             }
         } catch (SQLException ex) {

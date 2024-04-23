@@ -10,6 +10,10 @@ import java.util.ArrayList;
 public class UtilityCompany extends User{
     
    private  ArrayList<Integer> contactNumber;
+
+    public UtilityCompany(int id, String name, String username, String password) {
+        super(id, name, username, password);
+    }
    
     // private ArrayList<ISaleReportRO> SaleReport = new ArrayList<>();
 
