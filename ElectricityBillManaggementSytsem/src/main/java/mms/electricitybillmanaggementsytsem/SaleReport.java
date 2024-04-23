@@ -56,7 +56,7 @@ public class SaleReport {
     }
     
      public boolean addSaleReport(){
-          String sqlStmt = "INSERT INTO `SaleReport` (id , title , date , totalSale) VALUES ('" +this.id+ "' ,'" +this.title+ "', '" +this.date+ "', '" +this.totalSale+ "' , 'SaleReport')";
+          String sqlStmt = "INSERT INTO `SaleReport` (title , date , totalSale) VALUES ('" +this.title+ "', '" +this.date+ "', '" +this.totalSale+ "' )";
         return Database.getInsatnce().insertStmt(sqlStmt);
     }
      
