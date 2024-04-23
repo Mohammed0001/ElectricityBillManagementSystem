@@ -63,7 +63,7 @@ public class User {
         ResultSet rs = Database.getInsatnce().selectStmt(sqlStmt);
         try {
             while (rs.next()){
-                if (rs.getString("type").equals("employee")){
+                if (rs.getString("type").equals("admin")){
                     return new Employee();
                 }else if(rs.getString("type").equals("customer")){
                     return new Customer();

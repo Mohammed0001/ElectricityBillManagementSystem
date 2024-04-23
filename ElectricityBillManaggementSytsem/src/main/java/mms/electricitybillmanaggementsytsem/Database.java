@@ -14,23 +14,22 @@ import java.util.logging.Logger;
  * @author G#1 Group Work
  * 
  **/
-    //private String url = "jdbc:mysql://elecbillmangament-elecbillmangament.e.aivencloud.com:12543/defaultdb?sslMode=REQUIRED";
-    //private String user = "avnadmin";
-    //private String passwordd = "AVNS_gYNICaI53vjOPlpmtza";
-
+    
     //    private String url = "jdbc:mysql://sql11.freesqldatabase.com:3306/sql11701057";
     //    private String user = "sql11701057";
 //    private String passwordd = "cB58VxkATJ";
 
-
+//private String url = "jdbc:mysql://localhost:3306/ElecBillMangament";
+//    private String user = "root";
+//    private String passwordd="";
 
 public class Database {
     //private String url = "jdbc:sqlserver://Mohammeds-lapto;databaseName=ElecBillMangament";
     
-    private String url = "jdbc:mysql://localhost:3306/ElecBillMangament";
-    private String user = "root";
-    private String passwordd="";
-    
+    private String url = "jdbc:mysql://elecbillmangament-elecbillmangament.e.aivencloud.com:12543/defaultdb?sslMode=REQUIRED";
+    private String user = "avnadmin";
+    private String passwordd = "AVNS_gYNICaI53vjOPlpmtza";
+
     private Connection connection;
     private Statement statment;
 
