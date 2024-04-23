@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author kenzy 221945
  */
-public class CreateAcountEmployee extends javax.swing.JFrame {
+public class CreateAccountEmployee extends javax.swing.JFrame {
 
     /**
      * Creates new form login
      */
-    public CreateAcountEmployee() {
+    public CreateAccountEmployee() {
         initComponents();
     }
 

@@ -11,12 +11,11 @@ import javax.swing.JOptionPane;
  *
  * @author Karim 219226
  */
-public class CreateAcount extends javax.swing.JFrame {
+public class CreateAccount extends javax.swing.JFrame {
 
-    /**
-     * Creates new form login
-     */
-    public CreateAcount() {
+    Manager manager ;
+    public CreateAccount(Manager manager) {
+        this.manager = manager;
         initComponents();
     }
 
@@ -52,23 +51,27 @@ public class CreateAcount extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Sign up");
+        jButton2.setText("Create Account");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Name:");
 
-        jTextField1.setText("Enter your name");
-
         jLabel2.setText("Username:");
 
-        jTextField2.setText("set your password");
-
         jLabel3.setText("password");
-
-        jTextField3.setText("Enter your username");
 
         jButton3.setBackground(new java.awt.Color(153, 204, 255));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Home");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,6 +121,26 @@ public class CreateAcount extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        manager.openHome();
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        User cust = new Customer(0, jTextField1.getText(), jTextField3.getText(), jTextField2.getText());
+        if(cust.createAccount()){
+            JOptionPane.showMessageDialog(null, "Account created Successfully!", "Success!", JOptionPane.PLAIN_MESSAGE);
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+
+
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Error! Creating Account/\nPlease! try again", "Error!", JOptionPane.PLAIN_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

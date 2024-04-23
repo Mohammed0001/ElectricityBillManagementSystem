@@ -23,6 +23,12 @@ public class Customer extends User implements ICategoryObserver{
     }
     
 
+    @Override 
+    public boolean createAccount(){
+        String sqlStmt = "INSERT INTO `users` (name , username , password , type) VALUES ('" +this.getName()+ "' ,'" +this.getUsername()+ "', '" +this.getPassword()+ "' , 'customer')";
+        return Database.getInsatnce().insertStmt(sqlStmt); 
+    }
+    
     @Override
     public void updateCategoryNotification(String str) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
