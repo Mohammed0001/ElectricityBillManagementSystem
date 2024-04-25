@@ -10,6 +10,7 @@ import java.util.logging.Logger;
  *
  * @author Mohammed 227996
  */
+
 public class User {
     private int id;
     private String name;
@@ -67,6 +68,7 @@ public class User {
 
     
     public static User login(String username , String password){
+       
         String sqlStmt = "SELECT * FROM `users` WHERE username = '"+ username + "' AND password = '" + password +"';"; 
         ResultSet rs = Database.getInsatnce().selectStmt(sqlStmt);
         try {
@@ -83,7 +85,7 @@ public class User {
                     return new UtilityCompany(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
                 }
                 else if(rs.getString("type").equals("tech")){
-                   return new Technician(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
+                   return new Technician(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password") , "");
   }
                 else if(rs.getString("type").equals("manager")){
                     return new Manager(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));

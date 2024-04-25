@@ -11,6 +11,11 @@ public class Manager extends User{
         super(id, name, username, password);
     }
     
+     @Override 
+    public boolean createAccount(){
+        String sqlStmt = "INSERT INTO `users` (name , username , password , type) VALUES ('" +this.getName()+ "' ,'" +this.getUsername()+ "', '" +this.getPassword()+ "' , 'manager')";
+        return Database.getInsatnce().insertStmt(sqlStmt); 
+    }
     
     @Override 
     public void openHome(){

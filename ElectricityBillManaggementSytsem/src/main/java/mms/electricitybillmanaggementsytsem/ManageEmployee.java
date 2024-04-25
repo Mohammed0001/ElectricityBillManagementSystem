@@ -17,10 +17,10 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Group Work
  */
-public class ManageCustomer extends javax.swing.JFrame {
+public class ManageEmployee extends javax.swing.JFrame {
 
     Manager manager;
-    public ManageCustomer(Manager manager ) {
+    public ManageEmployee(Manager manager ) {
         this.manager = manager;
         initComponents();   
         viewCustomers();
@@ -31,15 +31,20 @@ public class ManageCustomer extends javax.swing.JFrame {
     
     private void viewCustomers(){
         DefaultTableModel model = (DefaultTableModel) customersTable.getModel();
-        ResultSet customers = Database.getInsatnce().selectStmt("SELECT * FROM `users` WHERE type = 'customer'"); // Assuming db is your database access object
         model.setRowCount(0); // Clear existing data
         try {
-            while(customers.next()){
+            ResultSet employees = Database.getInsatnce().selectStmt("SELECT * FROM `users` , employee WHERE type = 'employee' AND id = userID");
+            while(employees.next()){
                 //new Customer(customers.getInt("id") , customers.getString("name") , customers.getString("username") , "");
-               model.addRow(new Object[]{customers.getInt("id"), customers.getString("name") , customers.getString("username")});
+               model.addRow(new Object[]{employees.getInt("id"), employees.getString("name") , employees.getString("username") , employees.getString("type") , employees.getString("shift")});
+            }
+             ResultSet techs = Database.getInsatnce().selectStmt("SELECT * FROM `users` , employee WHERE type = 'technician' AND id = userID");    
+            while(techs.next()){
+                //new Customer(customers.getInt("id") , customers.getString("name") , customers.getString("username") , "");
+               model.addRow(new Object[]{techs.getInt("id"), techs.getString("name") , techs.getString("username") , techs.getString("type"), techs.getString("shift")});
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ManageCustomer.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManageEmployee.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -76,7 +81,8 @@ public class ManageCustomer extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Update Customer");
+        jButton2.setText("Update Employee");
+        jButton2.setActionCommand("Update Employee");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -85,7 +91,7 @@ public class ManageCustomer extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Remove Customer");
+        jButton3.setText("Remove Employee");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -94,7 +100,8 @@ public class ManageCustomer extends javax.swing.JFrame {
 
         jButton5.setBackground(new java.awt.Color(0, 0, 0));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Add Customer");
+        jButton5.setText("Add Employee");
+        jButton5.setActionCommand("Add Employee");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -103,17 +110,17 @@ public class ManageCustomer extends javax.swing.JFrame {
 
         customersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Username"
+                "ID", "Name", "Username", "Type", "Shift"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -175,17 +182,17 @@ public class ManageCustomer extends javax.swing.JFrame {
 
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new UpdateCustomerAccount(manager).setVisible(true);
+        new UpdateEmployeeAccountGUI(manager).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        new CreateAccount(manager).setVisible(true);
+        new CreateAccountEmployee(manager).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        new RemoveCustomerGUI(manager).setVisible(true);
+        new RemoveEmployeeGUI(manager).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 

@@ -1,27 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package mms.electricitybillmanaggementsytsem;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Group Work
- */
 public class TechnicalSupportRequest extends javax.swing.JFrame {
 
-    private Manager manager ;
+    private User user ;
     
-    public TechnicalSupportRequest(Manager manager ) {
-        this.manager = manager;
-        initComponents();
-       jLabel1.setText("Welcome! Manager, " + manager.getName());        
+    public TechnicalSupportRequest(User yser ) {
+       this.user = user;
+       initComponents();
+       jLabel1.setText("Welcome! " + user.getName()); 
+       viewReqs();
     }
 
-
+    public void viewReqs(){
+    
+    } 
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -95,7 +92,8 @@ public class TechnicalSupportRequest extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+      user.openHome();
+      this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

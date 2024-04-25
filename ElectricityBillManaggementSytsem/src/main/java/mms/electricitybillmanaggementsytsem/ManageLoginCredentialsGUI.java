@@ -137,9 +137,14 @@ public class ManageLoginCredentialsGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-        user = user.manageLoginCredentials(usernameField.getText(), passwordField.getText());
-        JOptionPane.showMessageDialog(null, "Updated Successfully!", "Success!", JOptionPane.PLAIN_MESSAGE);
-
+        try {
+            user = user.manageLoginCredentials(usernameField.getText(), passwordField.getText());
+            JOptionPane.showMessageDialog(null, "Updated Successfully!", "Success!", JOptionPane.PLAIN_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error! Updating Login Credentials!", "Error!", JOptionPane.PLAIN_MESSAGE);
+            System.out.println(e);
+        }
+        
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed

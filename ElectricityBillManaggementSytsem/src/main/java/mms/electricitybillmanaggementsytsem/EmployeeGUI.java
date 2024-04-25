@@ -17,9 +17,9 @@ public class EmployeeGUI extends javax.swing.JFrame {
     
     public EmployeeGUI(Employee employee ) {
         this.employee = employee;
-        jLabel1.setText("Welcome! Employee, " + employee.getName());
         initComponents();
-        
+        jLabel1.setText("Welcome! Employee, " + employee.getName());
+
     }
 
 
@@ -126,7 +126,8 @@ public class EmployeeGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        new EnterMeterReadingGUI(employee).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed

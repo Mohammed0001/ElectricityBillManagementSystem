@@ -1,29 +1,98 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package mms.electricitybillmanaggementsytsem;
 
-/**
- *
- * @author Karim 219226s
- */
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 public class Bill {
     private int id;
-    private ElectricityUsageID ElectricityUsage;
+    private ElectricityUsage ElectricityUsage;
     private IBillStatus status;
-    private Payment Payment;
+    private float discount;
+    private float amount;
+
+    public float getAmount() {
+        return amount;
+    }
+
+    public void setAmount(float amount) {
+        this.amount = amount;
+    }    
+
+    public float getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount (float disocunt) {
+        this.discount = disocunt;
+    }
+
+    
+    public Bill(int id , float discount){
+        this.id = id;
+        this.discount = discount;
+    }
+    
+    public Bill(int id, ElectricityUsage ElectricityUsage, IBillStatus status) {
+        this.id = id;
+        this.ElectricityUsage = ElectricityUsage;
+        this.status = status;
+    }
+    
+
+    
     
     public void calculateBill()
     {
-        
+        this.amount = (float) (ElectricityUsage.getCategory().getTax() * (float) ElectricityUsage.getCategory().getTariffRate() * (float) ElectricityUsage.getMeterReading());
     }
     
-    public void viewBill()
+    
+    public Bill viewBill()
     {
+        Bill b;
+        String sqlStmt = "SELECT * FROM `bill` WHERE id = "+ id ; 
+        ResultSet rs = Database.getInsatnce().selectStmt(sqlStmt);
+        try {
+            while (rs.next()){
+               b = new Bill(rs.getInt("id"), new ElectricityUsage(rs.getInt("electricityUsageID")), new BillPending());
+               return b;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+        
+    public static ArrayList<Bill> viewBills(int custid){
+        ArrayList<Bill> bills = new ArrayList<>();
+        String sqlStmt;
+        if(custid == 0){
+           sqlStmt = "SELECT * FROM `bill`"; 
+        }else{
+            sqlStmt = "SELECT * FROM `bill` , electricityusage WHERE electricityusage.id = bill.electricityUsageID  AND customerID = "+ custid ; 
+        }
+        try {
+            ResultSet rs = Database.getInsatnce().selectStmt(sqlStmt);
+            while (rs.next()){
+               bills.add(new Bill(rs.getInt("id"), new ElectricityUsage(rs.getInt("electricityUsageID"), 0), new BillPending()));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return bills;
         
     }
 
+    public boolean setDiscount(){
+        String sqlStmt = "UPDATE `bill` SET `discount` = '" + this.discount +"' WHERE id = " + this.id ;
+        return Database.getInsatnce().updateStmt(sqlStmt);
+    }
+    
     public int getId() {
         return id;
     }
@@ -32,11 +101,11 @@ public class Bill {
         this.id = id;
     }
     
-    public ElectricityUsageID getElectricityUsage() {
+    public ElectricityUsage getElectricityUsage() {
         return ElectricityUsage;
     }
 
-    public void setElectricityUsage(ElectricityUsageID ElectricityUsage) {
+    public void setElectricityUsage(ElectricityUsage ElectricityUsage) {
         this.ElectricityUsage = ElectricityUsage;
     }
     
@@ -48,31 +117,24 @@ public class Bill {
         this.status = status;
     }
 
-    public Payment getPayment() {
-        return Payment;
-    }
-    
-    public void setPayment(Payment Payment) {
-        this.Payment = Payment;
-    }
-    
     public boolean createBill(){
-        String sqlStmt = "INSERT INTO `Bill` (status , ElectricityUsageID , Payment) VALUES ('" +this.status+ "' ,'" +this.ElectricityUsage+ "', '" +this.Payment+ "' , 'Bill')";
+        calculateBill();
+        String sqlStmt = "INSERT INTO `bill` (status , electricityUsageID  , discount , amount) VALUES ('pending' ,'" +this.ElectricityUsage.getId()+ "' , '0' , "+ this.amount +")";
         return Database.getInsatnce().insertStmt(sqlStmt);
     }
     
     public boolean removeBill(){
-        String sqlStmt = "DELETE FROM `Bill` WHERE id = " + this.id;
+        String sqlStmt = "DELETE FROM `bill` WHERE id = " + this.id;
         return Database.getInsatnce().deleteStmt(sqlStmt);
     }
     
     public boolean updateBill(){
-        String sqlStmt = "UPDATE `Bill` SET `status` = '" + this.status +"' , `ElectricityUsageID` = '" + this.ElectricityUsage.getId() +"' ,`Payment` = '" + this.Payment +"', WHERE id = " + this.id ;
+        String sqlStmt = "UPDATE `bill` SET `status` = '" + this.status.toString() +"' , `electricityUsageID` = '" + this.ElectricityUsage.getId() +"'  WHERE id = " + this.id ;
         return Database.getInsatnce().updateStmt(sqlStmt);
     }
     
     @Override
     public String toString() {
-        return "Bill{" + "ElectricityUsage=" + ElectricityUsage + ", status=" + status + ", Payment=" + Payment + '}';
+        return "Bill{" + "ElectricityUsage=" + ElectricityUsage + ", status=" + status + '}';
     }
 }
