@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author Karim 219226
  */
-public class CreateCustomerAccountGUI extends javax.swing.JFrame {
+public class CreateEmployeeAccountGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form login
      */
-    public CreateCustomerAccountGUI() {
+    public CreateEmployeeAccountGUI() {
         initComponents();
     }
 
@@ -41,6 +41,8 @@ public class CreateCustomerAccountGUI extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
 
         jButton1.setText("jButton1");
 
@@ -50,19 +52,19 @@ public class CreateCustomerAccountGUI extends javax.swing.JFrame {
         setName("loginFrame"); // NOI18N
         setResizable(false);
 
-        jLabel4.setText("Create Customer Account");
+        jLabel4.setText("Create Employee Account");
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Update");
 
-        jLabel1.setText("Customer");
+        jLabel1.setText("Employee");
 
         jLabel2.setText("Username:");
 
         jTextField2.setText("set your password");
 
-        jLabel3.setText("password");
+        jLabel3.setText("Password");
 
         jTextField3.setText("Enter your username");
 
@@ -75,6 +77,8 @@ public class CreateCustomerAccountGUI extends javax.swing.JFrame {
         jLabel5.setText("Name:");
 
         jTextField4.setText("Enter your name");
+
+        jLabel6.setText("Shift");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,7 +99,9 @@ public class CreateCustomerAccountGUI extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField5))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -119,7 +125,11 @@ public class CreateCustomerAccountGUI extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
@@ -140,8 +150,10 @@ public class CreateCustomerAccountGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }
