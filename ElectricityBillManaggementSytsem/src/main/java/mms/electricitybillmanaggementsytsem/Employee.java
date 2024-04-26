@@ -17,6 +17,10 @@ public class Employee extends User implements ICategoryObserver , IElecTechReque
     public String shift;
     IElectricityTechnicalReq ElecTechReq;
 
+    public Employee(int id){
+        super(id);
+    }
+    
     public Employee(int id, String name, String username, String password , String shift) {
         super(id, name, username, password);
         this.shift = shift;
@@ -38,7 +42,8 @@ public class Employee extends User implements ICategoryObserver , IElecTechReque
     
     @Override
     public void updateCategoryNotification(String str) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    String sqlStmt = "UPDATE `users` SET `notification` = '" + str +"' WHERE id = " + getId() ;
+        Database.getInsatnce().updateStmt(sqlStmt);
     }
     
     @Override

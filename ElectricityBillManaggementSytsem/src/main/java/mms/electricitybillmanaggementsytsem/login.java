@@ -7,15 +7,9 @@ package mms.electricitybillmanaggementsytsem;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author mabou
- */
 public class login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form login
-     */
+
     public login() {
         initComponents();
     }

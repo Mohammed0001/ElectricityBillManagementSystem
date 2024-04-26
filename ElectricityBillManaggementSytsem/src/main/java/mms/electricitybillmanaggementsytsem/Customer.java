@@ -13,9 +13,13 @@ import java.util.logging.Logger;
  */
 
 public class Customer extends User implements ICategoryObserver , IElecTechRequester{
+    private String notification;
     private ArrayList<Bill> myBills ;
     private IElectricityTechnicalReq ElecTechReq;
-
+    
+    public Customer(int id){
+        super(id);
+    }
     public Customer(int id, String name, String username, String password) {
         super(id, name, username, password);
         //setMyBills();
@@ -57,7 +61,8 @@ public class Customer extends User implements ICategoryObserver , IElecTechReque
     
     @Override
     public void updateCategoryNotification(String str) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sqlStmt = "UPDATE `users` SET `notification` = '" + str +"' WHERE id = " + getId() ;
+        Database.getInsatnce().updateStmt(sqlStmt);
     }
     
     @Override

@@ -42,6 +42,15 @@ public class Bill {
         this.ElectricityUsage = ElectricityUsage;
         this.status = status;
     }
+
+    public Bill( int id,float discount, float amount , IBillStatus status) {
+        this.id = id;
+        this.status = status;
+        this.discount = discount;
+        this.amount = amount;
+    }
+    
+    
     
 
     
@@ -70,16 +79,22 @@ public class Bill {
         
     public static ArrayList<Bill> viewBills(int custid){
         ArrayList<Bill> bills = new ArrayList<>();
+        System.out.println(custid);
         String sqlStmt;
         if(custid == 0){
            sqlStmt = "SELECT * FROM `bill`"; 
         }else{
-            sqlStmt = "SELECT * FROM `bill` , electricityusage WHERE electricityusage.id = bill.electricityUsageID  AND customerID = "+ custid ; 
+            sqlStmt = "SELECT * FROM bill " +
+                      "INNER JOIN electricityusage ON bill.electricityUsageID = electricityusage.id " +
+                      "WHERE  electricityusage.customerID = "+ custid ; 
         }
         try {
             ResultSet rs = Database.getInsatnce().selectStmt(sqlStmt);
+            int i =0;
             while (rs.next()){
-               bills.add(new Bill(rs.getInt("id"), new ElectricityUsage(rs.getInt("electricityUsageID"), 0), new BillPending()));
+               bills.add(new Bill(rs.getInt("id"),rs.getFloat("discount"), rs.getFloat("amount"), new BillPending()));
+                System.out.println(bills.get(i));
+                i+=1;
             }
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);

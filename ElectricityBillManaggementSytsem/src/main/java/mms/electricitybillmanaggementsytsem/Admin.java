@@ -9,9 +9,19 @@ package mms.electricitybillmanaggementsytsem;
  * @author mabou
  */
 public class Admin extends User {
+    private static Admin adminInstance;
+
+   
     
-    public Admin(int id, String name, String username, String password) {
+    private Admin(int id, String name, String username, String password) {
         super(id, name, username, password);
+    }
+    
+    public static Admin getAdmin(int id, String name, String username, String password){
+        if(adminInstance == null){
+            adminInstance = new  Admin(id, name, username, password);
+        }
+        return adminInstance;
     }
     
     @Override 

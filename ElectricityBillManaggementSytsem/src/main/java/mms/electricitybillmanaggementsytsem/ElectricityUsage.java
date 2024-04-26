@@ -3,6 +3,7 @@ package mms.electricitybillmanaggementsytsem;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -76,6 +77,21 @@ public class ElectricityUsage {
         }
         
         return false;
+    }
+    
+    public static ElectricityUsage getusage(int custID){
+        String sqlStmt = "SELECT * FROM `electricityusage` WHERE customerID = '"+custID+"' ORDER BY id DESC LIMIT 1 ;"; 
+        ResultSet rs = Database.getInsatnce().selectStmt(sqlStmt);
+        try {
+            while (rs.next()){
+                ElectricityUsage eu =  new ElectricityUsage();
+                eu.setMeterReading(rs.getInt("meterReading"));
+                return eu;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;        
     }
 
     

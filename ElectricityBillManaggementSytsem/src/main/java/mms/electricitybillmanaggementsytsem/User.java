@@ -17,7 +17,10 @@ public class User {
     private String username;
     private String password;
     private ISystemReport SystemReport;
-
+    
+    public User (int id){
+        this.id = id;
+    }
     public User(int id, String name, String username, String password) {
         this.id = id;
         this.name = name;
@@ -75,7 +78,7 @@ public class User {
         try {
             while (rs.next()){
                 if (rs.getString("type").equals("admin")){
-                    return new Admin(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
+                    return Admin.getAdmin(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
                 }else if(rs.getString("type").equals("customer")){
                     return new Customer(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
                 }
@@ -123,6 +126,8 @@ public class User {
         this.SystemReport = sr;
         return SystemReport.requestsystemReport(id);
     }
+    
+    
     
     @Override
     public String toString() {
