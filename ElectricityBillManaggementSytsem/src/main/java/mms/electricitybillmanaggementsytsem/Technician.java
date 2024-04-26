@@ -46,7 +46,7 @@ public class Technician extends User{
     @Override
     public boolean updateAccount(){
         super.updateAccount();
-        String sqlStmt = "UPDATE 'technicain' SET `shift` = '" + this.shift +" WHERE userID = " + super.getId()+";)";
+        String sqlStmt = "UPDATE 'technicain' SET `shift` = '" + this.shift +"' WHERE userID = " + super.getId()+"";
         return Database.getInsatnce().updateStmt(sqlStmt);
     }
     

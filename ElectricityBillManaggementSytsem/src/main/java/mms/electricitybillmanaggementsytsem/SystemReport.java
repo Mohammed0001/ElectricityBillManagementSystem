@@ -7,19 +7,17 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Kenzy 221945
- */
-public class ElectricityTechnicalRequest implements IElectricityTechnicalRequestRO{
+
+public class SystemReport implements ISystemReport{
     private int id;
     private String title;
     private String date;
     private String description;
     private String feedback;
     private String status;
+    private int requesterID;
 
-    public ElectricityTechnicalRequest(int id, String title, String date, String description, String feedback, String status) {
+    public SystemReport(int id, String title, String date, String description, String feedback, String status) {
         this.id = id;
         this.title = title;
         this.date = date;
@@ -35,7 +33,7 @@ public class ElectricityTechnicalRequest implements IElectricityTechnicalRequest
 
     public void setFeedback(String feedback) {
         this.feedback = feedback;
-        manageElectricityTechnicalSupportRequest();
+        manageSystemReport();
     }
 
     public String getStatus() {
@@ -44,10 +42,11 @@ public class ElectricityTechnicalRequest implements IElectricityTechnicalRequest
 
     public void setStatus(String status) {
         this.status = status;
-        manageElectricityTechnicalSupportRequest();
+        manageSystemReport();
+        
     }
 
-    @Override
+
     public int getId() {
         return id; 
     }
@@ -56,7 +55,7 @@ public class ElectricityTechnicalRequest implements IElectricityTechnicalRequest
         this.id = id;
     }
 
-    @Override
+
     public String getTitle() {
         return title;
     }
@@ -65,7 +64,7 @@ public class ElectricityTechnicalRequest implements IElectricityTechnicalRequest
         this.title = title;
     }
 
-    @Override
+
     public String getDate() {
         return date;
     }
@@ -74,7 +73,6 @@ public class ElectricityTechnicalRequest implements IElectricityTechnicalRequest
         this.date = date;
     }
 
-    @Override
     public String getDescription() {
         return description;
     }
@@ -82,23 +80,23 @@ public class ElectricityTechnicalRequest implements IElectricityTechnicalRequest
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    public boolean requestElectricityTechnicalSupport(int requesterID){
-        String sqlStmt = "INSERT INTO `electricitytechnicalrequest` (title , date , description , feedback , status , requesterID) VALUES ('" +this.title+ "', '" +this.date+ "' ,'" +this.description+ "', '" +this.feedback+ "', '" +this.status+ "', '" +requesterID+ "')";
+    @Override
+    public boolean requestsystemReport(int requesterID){
+        String sqlStmt = "INSERT INTO `systemreport` (title , date , description , feedback , status , requesterID) VALUES ('" +this.title+ "', '" +this.date+ "' ,'" +this.description+ "', '" +this.feedback+ "', '" +this.status+ "', '" +requesterID+ "')";
         return Database.getInsatnce().insertStmt(sqlStmt);
        
     }
     
   
-    public static ArrayList<ElectricityTechnicalRequest> viewElectricityTechnicalSupportRequest(){
-        ArrayList <ElectricityTechnicalRequest> requests = new ArrayList<>();
+    public static ArrayList<SystemReport> viewSystemReport(){
+        ArrayList <SystemReport> requests = new ArrayList<>();
         String sqlStmt = "SELECT etr.*, u.name " +
-                 "FROM electricitytechnicalrequest AS etr , users AS u " +
+                 "FROM systemreport AS etr , users AS u " +
                  "WHERE etr.requesterID = u.id;"; 
         ResultSet rs = Database.getInsatnce().selectStmt(sqlStmt);
         try {
             while (rs.next()){
-                requests.add(new ElectricityTechnicalRequest(rs.getInt("id"), rs.getString("title"), rs.getString("date"),rs.getString("description") ,rs.getString("feedback"),rs.getString("status")));
+                requests.add(new SystemReport(rs.getInt("id"), rs.getString("title"), rs.getString("date"),rs.getString("description") ,rs.getString("feedback"),rs.getString("status")));
             }
         } catch (SQLException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
@@ -106,14 +104,21 @@ public class ElectricityTechnicalRequest implements IElectricityTechnicalRequest
         return requests;        
     }
     
-    public boolean manageElectricityTechnicalSupportRequest(){
-         String sqlStmt = "UPDATE `electricitytechnicalrequest` SET `status` = '" + this.status +"' , `feedback` = '" + this.feedback +"' WHERE id = " + this.id ;
+    public boolean manageSystemReport(){
+         String sqlStmt = "UPDATE `systemreport` SET `status` = '" + this.status +"' , `feedback` = '" + this.feedback +"' WHERE id = " + this.id ;
         return Database.getInsatnce().updateStmt(sqlStmt);
     }
     
-     public boolean deleteElectricityTechnicalSupportRequest(){
+     public boolean deleteSystemReport(){
         
-         String sqlStmt = "DELETE FROM `electricitytechnicalrequest` WHERE id = " + this.id;
+         String sqlStmt = "DELETE FROM `systemreport` WHERE id = " + this.id;
         return Database.getInsatnce().deleteStmt(sqlStmt);
     }
+
+    @Override
+    public String toString() {
+        return "SystemReport{" + "id=" + id + ", title=" + title + ", date=" + date + ", description=" + description + ", feedback=" + feedback + ", status=" + status + ", requesterID=" + requesterID + '}';
+    }
+     
+     
 }

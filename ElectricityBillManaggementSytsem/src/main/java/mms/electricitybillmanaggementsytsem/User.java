@@ -16,13 +16,14 @@ public class User {
     private String name;
     private String username;
     private String password;
-    //    private ISystemReport SystemReport;
+    private ISystemReport SystemReport;
 
     public User(int id, String name, String username, String password) {
         this.id = id;
         this.name = name;
         this.username = username;
         this.password = password;
+        
     }
 
     
@@ -116,6 +117,11 @@ public class User {
     public boolean updateAccount(){
         String sqlStmt = "UPDATE `users` SET `name` = '" + this.name +"' , `username` = '" + this.username +"' , `password` =  '"+this.password+"' WHERE id = " + this.id ;
         return Database.getInsatnce().updateStmt(sqlStmt);
+    }
+    
+    public boolean requestSystemReport(SystemReport sr){
+        this.SystemReport = sr;
+        return SystemReport.requestsystemReport(id);
     }
     
     @Override
