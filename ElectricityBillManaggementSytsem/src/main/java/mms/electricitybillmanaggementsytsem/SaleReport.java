@@ -41,9 +41,9 @@ public class SaleReport {
         return totalSale;
     }
     
-    public ArrayList<SaleReport> viewSaleReports(){
+    public static ArrayList<SaleReport> viewSaleReports(){
         ArrayList <SaleReport> reports = new ArrayList<>();
-        String sqlStmt = "SELECT * FROM `SaleReport`;"; 
+        String sqlStmt = "SELECT * FROM `salereport`;"; 
         ResultSet rs = Database.getInsatnce().selectStmt(sqlStmt);
         try {
             while (rs.next()){
@@ -56,7 +56,7 @@ public class SaleReport {
     }
     
      public boolean addSaleReport(){
-          String sqlStmt = "INSERT INTO `SaleReport` (title , date , totalSale) VALUES ('" +this.title+ "', '" +this.date+ "', '" +this.totalSale+ "' )";
+        String sqlStmt = "INSERT INTO `salereport` (title , date , totalSale) VALUES ('" +this.title+ "', '" +this.date+ "', '" +this.totalSale+ "' )";
         return Database.getInsatnce().insertStmt(sqlStmt);
     }
      

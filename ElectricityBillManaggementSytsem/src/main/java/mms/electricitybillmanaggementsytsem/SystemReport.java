@@ -3,6 +3,8 @@ package mms.electricitybillmanaggementsytsem;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +28,16 @@ public class SystemReport implements ISystemReport{
         this.status = status;
     }
     
-
+    public SystemReport( String title, String description ) {
+        this.title = title;
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        this.date = today.format(formatter);
+        this.description = description;
+        this.feedback = "";
+        this.status = "pending";
+    }
+    
     public String getFeedback() {
         return feedback;
     }

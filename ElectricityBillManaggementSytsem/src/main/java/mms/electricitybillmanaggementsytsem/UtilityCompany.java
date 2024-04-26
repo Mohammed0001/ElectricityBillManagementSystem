@@ -26,6 +26,10 @@ public class UtilityCompany extends User{
         this.contactNumber = contactNumber;
     }
     
+    @Override
+    public void openHome(){
+        new UtilityCompanyGUI(this).setVisible(true);
+    }
     
    
     

@@ -12,10 +12,10 @@ import java.util.logging.Logger;
  *
  * @author Nashwa 220488
  */
-public class Employee extends User implements ICategoryObserver{
+public class Employee extends User implements ICategoryObserver , IElecTechRequester{
     
     public String shift;
-    //Emloyee implements IElecTechReqR();
+    IElectricityTechnicalReq ElecTechReq;
 
     public Employee(int id, String name, String username, String password , String shift) {
         super(id, name, username, password);
@@ -28,6 +28,12 @@ public class Employee extends User implements ICategoryObserver{
 
     public void setShift(String shift) {
         this.shift = shift;
+    }
+    
+    @Override
+    public boolean RequestElecTechReq(IElectricityTechnicalReq req){
+        ElecTechReq = req;
+        return ElecTechReq.requestElectricityTechnicalSupport(getId());
     }
     
     @Override

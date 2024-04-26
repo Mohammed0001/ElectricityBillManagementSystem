@@ -87,7 +87,7 @@ public class User {
                 }
                 else if(rs.getString("type").equals("tech")){
                    return new Technician(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password") , "");
-  }
+               }
                 else if(rs.getString("type").equals("manager")){
                     return new Manager(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
                 }

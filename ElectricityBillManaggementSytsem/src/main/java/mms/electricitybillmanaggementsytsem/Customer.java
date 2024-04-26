@@ -12,8 +12,9 @@ import java.util.logging.Logger;
  * @author Kenzy 221945
  */
 
-public class Customer extends User implements ICategoryObserver{
+public class Customer extends User implements ICategoryObserver , IElecTechRequester{
     private ArrayList<Bill> myBills ;
+    private IElectricityTechnicalReq ElecTechReq;
 
     public Customer(int id, String name, String username, String password) {
         super(id, name, username, password);
@@ -42,6 +43,12 @@ public class Customer extends User implements ICategoryObserver{
         return customers;
     }
 
+     @Override
+    public boolean RequestElecTechReq(IElectricityTechnicalReq req){
+        ElecTechReq = req;
+        return ElecTechReq.requestElectricityTechnicalSupport(getId());
+    }
+    
     @Override 
     public boolean createAccount(){
         String sqlStmt = "INSERT INTO `users` (name , username , password , type) VALUES ('" +this.getName()+ "' ,'" +this.getUsername()+ "', '" +this.getPassword()+ "' , 'customer')";

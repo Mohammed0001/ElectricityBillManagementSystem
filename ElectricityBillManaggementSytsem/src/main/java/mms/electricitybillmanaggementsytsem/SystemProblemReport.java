@@ -144,12 +144,20 @@ public class SystemProblemReport extends javax.swing.JFrame{
 
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        boolean suc = true;
         for(int i = 0 ; i < reqs.size();i++){
             SystemReport sr =  reqs.get(i);
             sr.setStatus((String) jTable1.getValueAt(i, 4));
-            sr.setFeedback((String) jTable1.getValueAt(i, 5));   
+            sr.setFeedback((String) jTable1.getValueAt(i, 5));  
+            if (!sr.manageSystemReport()) {
+                suc = false;
+            }
         }
-        
+         if (suc) {
+            JOptionPane.showMessageDialog(null, "Reports Successfully! Updated ", "Success!", JOptionPane.PLAIN_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "Error! Updating Reports", "Error!", JOptionPane.PLAIN_MESSAGE);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

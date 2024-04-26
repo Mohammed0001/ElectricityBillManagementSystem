@@ -3,6 +3,8 @@ package mms.electricitybillmanaggementsytsem;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,7 +13,7 @@ import java.util.logging.Logger;
  *
  * @author Kenzy 221945
  */
-public class ElectricityTechnicalRequest implements IElectricityTechnicalRequestRO{
+public class ElectricityTechnicalRequest implements IElectricityTechnicalRequestRO , IElectricityTechnicalReq{
     private int id;
     private String title;
     private String date;
@@ -26,6 +28,16 @@ public class ElectricityTechnicalRequest implements IElectricityTechnicalRequest
         this.description = description;
         this.feedback = feedback;
         this.status = status;
+    }
+    
+    public ElectricityTechnicalRequest( String title, String description ) {
+        this.title = title;
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        this.date = today.format(formatter);
+        this.description = description;
+        this.feedback = "";
+        this.status = "pending";
     }
     
 
@@ -82,11 +94,10 @@ public class ElectricityTechnicalRequest implements IElectricityTechnicalRequest
     public void setDescription(String description) {
         this.description = description;
     }
-    
+    @Override
     public boolean requestElectricityTechnicalSupport(int requesterID){
         String sqlStmt = "INSERT INTO `electricitytechnicalrequest` (title , date , description , feedback , status , requesterID) VALUES ('" +this.title+ "', '" +this.date+ "' ,'" +this.description+ "', '" +this.feedback+ "', '" +this.status+ "', '" +requesterID+ "')";
         return Database.getInsatnce().insertStmt(sqlStmt);
-       
     }
     
   
@@ -116,4 +127,6 @@ public class ElectricityTechnicalRequest implements IElectricityTechnicalRequest
          String sqlStmt = "DELETE FROM `electricitytechnicalrequest` WHERE id = " + this.id;
         return Database.getInsatnce().deleteStmt(sqlStmt);
     }
+
+
 }

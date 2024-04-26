@@ -8,9 +8,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class Technician extends User{
+public class Technician extends User { 
     
     public String shift;
+    private ElectricityTechnicalRequest ElecTechReq;
 
     public String getShift() {
         return shift;
@@ -56,6 +57,12 @@ public class Technician extends User{
          String sqlStmt = "DELETE FROM 'technicain' WHERE userID = " + super.getId()+";";
         return Database.getInsatnce().deleteStmt(sqlStmt);
     }
+
+    public boolean RequestElecTechReq(ElectricityTechnicalRequest req){
+        ElecTechReq = req;
+        return ElecTechReq.requestElectricityTechnicalSupport(getId());
+    }
+    
     
      public static ArrayList<Technician> getTechs(){
         ArrayList <Technician> techs = new ArrayList <>();
@@ -74,5 +81,6 @@ public class Technician extends User{
     public void openHome(){
         new TechnicianGUI(this).setVisible(true);
     }
+
     
 }
