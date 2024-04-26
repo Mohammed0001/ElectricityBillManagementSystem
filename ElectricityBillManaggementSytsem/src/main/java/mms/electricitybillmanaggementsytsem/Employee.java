@@ -56,7 +56,7 @@ public class Employee extends User implements ICategoryObserver{
     @Override
     public boolean updateAccount(){
         super.updateAccount();
-        String sqlStmt = "UPDATE `employee` SET shift = '" + this.shift +"' WHERE userID = " + super.getId()+";)";
+        String sqlStmt = "UPDATE `employee` SET shift = '" + this.shift +"' WHERE userID = " + super.getId();
         return Database.getInsatnce().updateStmt(sqlStmt);
     }
     
