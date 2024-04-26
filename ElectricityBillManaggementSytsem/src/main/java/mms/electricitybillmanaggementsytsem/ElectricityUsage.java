@@ -27,9 +27,8 @@ public class ElectricityUsage {
     }
     
     public ElectricityUsage(int meterReading){
-        this.meterReading = meterReading;
+       this.meterReading = meterReading;
        category = new Category(0);
-       System.out.println("mms.electricitybillmanaggementsytsem.ElectricityUsage.<init>()");
     }
     
     public int getId() {
@@ -58,6 +57,7 @@ public class ElectricityUsage {
     
     public boolean generateUsage(int custID){
         category = category.handleCategory(meterReading);
+        category.addObserver(new Customer(custID));
         System.out.println("Handled Catgeory : " + category);
         String sqlStmt = "INSERT INTO `electricityusage`( `meterReading`, `categoryID`, `customerID`) VALUES ('"+this.getMeterReading()+"','"+category.getId()+"','"+custID+"')";
         if (Database.getInsatnce().insertStmt(sqlStmt)) {
@@ -94,5 +94,4 @@ public class ElectricityUsage {
         return null;        
     }
 
-    
 }

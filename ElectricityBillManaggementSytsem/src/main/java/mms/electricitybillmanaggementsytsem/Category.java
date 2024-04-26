@@ -18,8 +18,12 @@ public class Category implements ICategorySubject {
     private int range;
     public Category Successor;
     private ArrayList<ICategoryObserver> observers = new ArrayList<>() ;
-
-    public Category(){}
+    
+    public Category(){
+        loadCategoryFromDatabase();
+        setSuccessor();
+        loadObservers();
+    }
     
     public Category(int id){
         this.id = id;
@@ -35,40 +39,7 @@ public class Category implements ICategorySubject {
         this.range = range;
     }
     
-    
-    
-    private void loadCategoryFromDatabase(){
-        String SqlStmt = "SELECT * FROM `categroy` WHERE id = " + this.id ;
-        ResultSet category = Database.getInsatnce().selectStmt(SqlStmt);
-        try {
-            if(category.next()){
-                Tax = category.getDouble("tax");
-                TariffRate = category.getDouble("tariffRate");
-                range = category.getInt("range");                
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    private void loadObservers(){
-        //String SqlStmt = "SELECT * FROM `categroy` , categoryobserver WHERE categoryID = categroy.id " ;
-        String sqlStmt = "SELECT * FROM users WHERE type = 'employee' OR type = 'manager' OR type = 'customer'";
-        ResultSet category = Database.getInsatnce().selectStmt(sqlStmt);
-        try {
-            while (category.next()) {
-                if (category.getString("type").equals("employee")) {
-                    observers.add(new Employee(category.getInt("id")));
-                }else if(category.getString("type").equals("id")){
-                    observers.add(new Manager(category.getInt("id")));
-                }else{
-                    observers.add(new Customer(category.getInt("id")));
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    public int getId() {
+        public int getId() {
         return id;
     }
 
@@ -109,14 +80,39 @@ public class Category implements ICategorySubject {
         this.observers = observers;
     }
     
-    
-    public void manageTariffRate(){
-        
+    private void loadCategoryFromDatabase(){
+        String SqlStmt = "SELECT * FROM `categroy` WHERE id = " + this.id ;
+        ResultSet category = Database.getInsatnce().selectStmt(SqlStmt);
+        try {
+            if(category.next()){
+                Tax = category.getDouble("tax");
+                TariffRate = category.getDouble("tariffRate");
+                range = category.getInt("range");                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
-    public void defineTax(){
-        
+    private void loadObservers(){
+       
+        String sqlStmt = "SELECT * FROM `categoryobserver` WHERE `categoryID` = " + id ;
+        //String sqlStmt = "SELECT * FROM users WHERE type = 'employee' OR type = 'manager' OR type = 'customer'";
+        ResultSet observer = Database.getInsatnce().selectStmt(sqlStmt);
+        try {
+            while (observer.next()) {
+                if (observer.getString("observertype").equals("Employee")) {
+                    observers.add(new Employee(observer.getInt("observerID")));
+                }else if(observer.getString("observertype").equals("Manager")){
+                    observers.add(new Manager(observer.getInt("observerID")));
+                }else{
+                    observers.add(new Customer(observer.getInt("observerID")));
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+
 
     public void setSuccessor(){
         if(Successor == null){
@@ -159,7 +155,7 @@ public class Category implements ICategorySubject {
         } catch (SQLException ex) {
             Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
         }
-                }
+       }
 
     }
     
@@ -176,7 +172,6 @@ public class Category implements ICategorySubject {
     }
     
     public boolean manageCategory(){
-        loadObservers();
         String notification = "Category with range " + getRange() + " and Tariff rate " + TariffRate + " and tax " + Tax + " has been updated";
         updateAll(notification);
         String sqlStmt = "UPDATE categroy SET `range` = '" + this.range +"' , `tariffRate` = '" + this.TariffRate +"' , `tax` =  '"+this.Tax+"' WHERE id = " + this.id ;
@@ -200,15 +195,20 @@ public class Category implements ICategorySubject {
     @Override
     public void addObserver(ICategoryObserver observer) {
         observers.add(observer);
+        String sqlStmt = "INSERT INTO `categoryobserver` (observerID , categoryID , observertype) VALUES ('" +observer.getId()+ "' ,'" +getId()+ "', '"+observer.getClass().getSimpleName()+"')";
+        Database.getInsatnce().insertStmt(sqlStmt);
     }
 
     @Override
     public void removeObserver(ICategoryObserver observer) {
         observers.remove(observer);
+        String sqlStmt = "DELETE FROM `categoryobserver` WHERE observerID = " + observer.getId() ;   
+        Database.getInsatnce().deleteStmt(sqlStmt);
     }
 
     @Override
     public void updateAll(String str) {
+        loadObservers();
         for (ICategoryObserver observer : observers) {
             observer.updateCategoryNotification(str);
         }
