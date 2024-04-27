@@ -7,6 +7,8 @@
         <Property name="text" type="java.lang.String" value="jButton1"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -177,6 +179,9 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="dayShift">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroup1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Day"/>
         <Property name="name" type="java.lang.String" value="shift" noResource="true"/>
       </Properties>
@@ -186,6 +191,9 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="nightShift">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroup1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Night"/>
         <Property name="name" type="java.lang.String" value="shift" noResource="true"/>
       </Properties>
