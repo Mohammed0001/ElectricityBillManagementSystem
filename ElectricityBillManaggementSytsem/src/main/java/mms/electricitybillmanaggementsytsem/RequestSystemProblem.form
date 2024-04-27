@@ -10,7 +10,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="createAcountCustomer"/>
+    <Property name="title" type="java.lang.String" value="Request System Problem"/>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="ff" green="cc" red="33" type="rgb"/>
     </Property>
@@ -79,7 +79,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Request Electricity Technical Support "/>
+        <Property name="text" type="java.lang.String" value="Request System Problem"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">

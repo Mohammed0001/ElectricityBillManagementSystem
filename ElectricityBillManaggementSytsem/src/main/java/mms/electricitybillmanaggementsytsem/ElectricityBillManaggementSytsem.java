@@ -18,7 +18,6 @@ public class ElectricityBillManaggementSytsem {
         new login().setVisible(true);
         Database.getInsatnce() ;
         System.out.println("Susscess!! in mms.electricitybillmanaggementsytsem.ElectricityBillManaggementSytsem.main()");
-
     }
  
 }

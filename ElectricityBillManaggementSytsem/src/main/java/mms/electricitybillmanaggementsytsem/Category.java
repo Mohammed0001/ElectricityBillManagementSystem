@@ -92,7 +92,7 @@ public class Category implements ICategorySubject {
         } catch (SQLException ex) {
             Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }    
     private void loadObservers(){
        
         String sqlStmt = "SELECT * FROM `categoryobserver` WHERE `categoryID` = " + id ;
