@@ -60,9 +60,9 @@ public class SystemProblemReport extends javax.swing.JFrame{
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Manager Home Page");
+        setTitle("Manage ");
         setBackground(new java.awt.Color(51, 204, 255));
-        setName("managerHomeFrame"); // NOI18N
+        setName("managersystemproblem"); // NOI18N
         setResizable(false);
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
@@ -137,6 +137,8 @@ public class SystemProblemReport extends javax.swing.JFrame{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        getAccessibleContext().setAccessibleName("Manager system problem");
 
         pack();
         setLocationRelativeTo(null);
