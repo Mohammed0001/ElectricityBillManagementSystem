@@ -61,6 +61,7 @@ public class Customer extends User implements ICategoryObserver , IElecTechReque
     
     @Override
     public void updateCategoryNotification(String str) {
+        System.out.println(str);
         String sqlStmt = "UPDATE `users` SET `notification` = '" + str +"' WHERE id = " + getId() ;
         Database.getInsatnce().updateStmt(sqlStmt);
     }

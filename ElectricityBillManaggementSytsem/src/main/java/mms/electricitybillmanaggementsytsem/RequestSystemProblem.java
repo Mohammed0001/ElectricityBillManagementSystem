@@ -33,12 +33,12 @@ public class RequestSystemProblem extends javax.swing.JFrame {
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("createAcountCustomer");
+        setTitle("Request System Problem");
         setBackground(new java.awt.Color(51, 204, 255));
         setName("loginFrame"); // NOI18N
         setResizable(false);
 
-        jLabel4.setText("Request Electricity Technical Support ");
+        jLabel4.setText("Request System Problem");
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));

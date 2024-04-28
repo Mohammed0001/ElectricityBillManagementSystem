@@ -21,6 +21,7 @@ import java.util.logging.Logger;
     private double discount;
     private String date;
     private IPayBill type;
+    private Bill bill;
     
     
     
@@ -61,17 +62,24 @@ import java.util.logging.Logger;
         this.discount = discount;
     }
 
+    public void setBill(Bill b){
+           this.bill = b;
+    }
+    
     public void setDate(String date) {
         this.date = date;
     }
-
-    public ArrayList<Payment> viewInvoices() {
+    
+    public static ArrayList<Payment> viewInvoices( int custid) {
         ArrayList<Payment> payments =  new ArrayList<>();
-        ResultSet rs = Database.getInsatnce().selectStmt("SELECT * FROM users;");
+        ResultSet rs = Database.getInsatnce().selectStmt("SELECT * FROM payment;");
 
         try {
             while(rs.next()){
                 Payment p = new Payment();
+                p.setTransactionNumber(rs.getInt("transactionNumber"));
+                p.setDate(rs.getString("date"));
+                p.setValue(rs.getInt("amount"));
                 payments.add(p);
             }
         } catch (SQLException ex) {
