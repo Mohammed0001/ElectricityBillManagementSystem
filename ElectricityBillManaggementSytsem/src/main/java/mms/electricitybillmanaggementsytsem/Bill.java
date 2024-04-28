@@ -86,11 +86,11 @@ public class Bill {
         System.out.println(custid);
         String sqlStmt;
         if(custid == 0){
-           sqlStmt = "SELECT * FROM `bill`"; 
+           sqlStmt = "SELECT * FROM `bill` WHERE `status` = 'pending'"; 
         }else{
             sqlStmt = "SELECT * FROM bill " +
                       "INNER JOIN electricityusage ON bill.electricityUsageID = electricityusage.id " +
-                      "WHERE  electricityusage.customerID = "+ custid ; 
+                      "WHERE `status` = 'pending' AND electricityusage.customerID = "+ custid ; 
         }
         try {
             ResultSet rs = Database.getInsatnce().selectStmt(sqlStmt);
