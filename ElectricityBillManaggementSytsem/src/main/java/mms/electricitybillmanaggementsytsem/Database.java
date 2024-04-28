@@ -34,7 +34,7 @@ public class Database {
 
     private static Database dbInstance; 
     
-    public Database(){
+    private Database(){
         try {
 //          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             Class.forName("com.mysql.cj.jdbc.Driver");
