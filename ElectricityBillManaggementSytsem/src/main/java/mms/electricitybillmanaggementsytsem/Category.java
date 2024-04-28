@@ -11,6 +11,7 @@ import java.util.logging.Logger;
  *
  * @author Mohammed 227996
  */
+
 public class Category implements ICategorySubject {
     private int id;
     private double TariffRate;
