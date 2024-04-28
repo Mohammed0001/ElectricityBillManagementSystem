@@ -29,6 +29,9 @@ public class ElectricityTechnicalRequest implements IElectricityTechnicalRequest
         this.feedback = feedback;
         this.status = status;
     }
+
+    public ElectricityTechnicalRequest() {
+    }
     
     public ElectricityTechnicalRequest( String title, String description ) {
         this.title = title;
