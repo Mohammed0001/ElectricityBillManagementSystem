@@ -34,6 +34,7 @@ public class UpdateEmployeeAccountGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -93,6 +94,7 @@ public class UpdateEmployeeAccountGUI extends javax.swing.JFrame {
 
         jLabel6.setText("Shift");
 
+        buttonGroup1.add(dayShift);
         dayShift.setText("Day");
         dayShift.setName("shift"); // NOI18N
         dayShift.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +103,7 @@ public class UpdateEmployeeAccountGUI extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(nightShift);
         nightShift.setText("Night");
         nightShift.setName("shift"); // NOI18N
         nightShift.addActionListener(new java.awt.event.ActionListener() {
@@ -262,6 +265,7 @@ public class UpdateEmployeeAccountGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton dayShift;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

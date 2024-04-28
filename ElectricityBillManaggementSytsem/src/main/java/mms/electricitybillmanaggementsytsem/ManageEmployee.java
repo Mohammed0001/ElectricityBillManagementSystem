@@ -74,7 +74,7 @@ public class ManageEmployee extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Manager Home Page");
+        setTitle("Manage employee");
         setBackground(new java.awt.Color(51, 204, 255));
         setName("managerHomeFrame"); // NOI18N
         setResizable(false);
@@ -82,7 +82,6 @@ public class ManageEmployee extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Update Employee");
-        jButton2.setActionCommand("Update Employee");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -101,7 +100,6 @@ public class ManageEmployee extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(0, 0, 0));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Add Employee");
-        jButton5.setActionCommand("Add Employee");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);

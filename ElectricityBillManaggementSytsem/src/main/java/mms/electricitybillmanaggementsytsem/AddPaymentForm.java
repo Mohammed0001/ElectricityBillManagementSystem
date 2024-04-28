@@ -4,9 +4,6 @@
  */
 package mms.electricitybillmanaggementsytsem;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,11 +11,15 @@ import javax.swing.JOptionPane;
  * @author N
  */
 public class AddPaymentForm extends javax.swing.JFrame {
+    
+    private Payment payment;
 
     /**
      * Creates new form AddPaymentForm
+     * @param payment
      */
-    public AddPaymentForm() {
+    public AddPaymentForm(Payment payment) {
+        this.payment = payment;
         initComponents();
     }
 
@@ -45,7 +46,9 @@ public class AddPaymentForm extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 204));
         jLabel2.setText("Choose Payment Method :");
 
+        bankbutton.setBackground(new java.awt.Color(0, 0, 0));
         bankbutton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bankbutton.setForeground(new java.awt.Color(255, 255, 255));
         bankbutton.setText("Bank");
         bankbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,7 +56,9 @@ public class AddPaymentForm extends javax.swing.JFrame {
             }
         });
 
+        instapay.setBackground(new java.awt.Color(0, 0, 0));
         instapay.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        instapay.setForeground(new java.awt.Color(255, 255, 255));
         instapay.setText("instapay");
         instapay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,7 +66,9 @@ public class AddPaymentForm extends javax.swing.JFrame {
             }
         });
 
+        cash1.setBackground(new java.awt.Color(0, 0, 0));
         cash1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cash1.setForeground(new java.awt.Color(255, 255, 255));
         cash1.setText("cash");
         cash1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,16 +116,17 @@ public class AddPaymentForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bankbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bankbuttonActionPerformed
-         BankCardForm BankCardForm = new BankCardForm();
+         BankCardForm BankCardForm = new BankCardForm(payment);
 
         // create the bank button and add an action listener to it
+
         this.setVisible(false);
         BankCardForm.setVisible(true);
 
     }//GEN-LAST:event_bankbuttonActionPerformed
 
     private void instapayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_instapayActionPerformed
-           InstaPayform InstaPayForm = new InstaPayform();
+           InstaPayform InstaPayForm = new InstaPayform(payment);
 
         // create the bank button and add an action listener to it
         this.setVisible(false);
@@ -162,7 +170,7 @@ public class AddPaymentForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddPaymentForm().setVisible(true);
+                new AddPaymentForm(new Payment()).setVisible(true);
             }
         });
     }

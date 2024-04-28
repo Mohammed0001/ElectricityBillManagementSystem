@@ -147,7 +147,7 @@ public class viewInvoices extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         Customer c = customers.get(jComboBox1.getSelectedIndex());
-        viewBills(c.getId());
+       viewBills(c.getId());
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
