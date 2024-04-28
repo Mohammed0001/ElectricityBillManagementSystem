@@ -134,7 +134,8 @@ public class Bill {
 
     public void setStatus(IBillStatus status) {
         this.status = status;
-        updateBill();
+        String sqlStmt = "UPDATE `bill` SET `status` = '" + this.status.toString() +"'  WHERE id = " + this.id ;
+    Database.getInsatnce().updateStmt(sqlStmt);
     }
 
     public boolean createBill(){
