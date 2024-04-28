@@ -28,7 +28,7 @@ public class BillPending implements IBillStatus{
 
     @Override
     public String toString() {
-        return "BillPending{" + "payment=" + payment + '}';
+        return "Pending";
     }
     
 }

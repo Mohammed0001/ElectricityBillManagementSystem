@@ -28,7 +28,7 @@ public class BillPaid implements IBillStatus{
 
     @Override
     public String toString() {
-        return "BillPaid{" + "payment=" + payment + '}';
+        return "paid";
     }
     
 }
