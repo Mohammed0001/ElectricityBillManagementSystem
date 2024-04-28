@@ -18,8 +18,9 @@ public class InstaPay implements IPayBill {
     private double paymentFees;
     private final String instaPayHandle;
 
-    public InstaPay(String instaPayHandle) {
+    public InstaPay(String instaPayHandle, double amount) {
         this.instaPayHandle = instaPayHandle;
+        this.amount = amount;
     }
 
     public double getAmount() {
@@ -51,9 +52,9 @@ public class InstaPay implements IPayBill {
         //to be implemented
     }
     
-    public static boolean createAccount(String ipHandle){
+    public static InstaPay createAccount(String ipHandle){
         String sqlStmt = "INSERT INTO `instapay` (instapayhandle, amount) VALUES ('" + ipHandle + "', '1000')";
         boolean res = Database.getInsatnce().insertStmt(sqlStmt);
-        return res;
+        return res?new InstaPay(ipHandle, 1000):null ;
     }
 }

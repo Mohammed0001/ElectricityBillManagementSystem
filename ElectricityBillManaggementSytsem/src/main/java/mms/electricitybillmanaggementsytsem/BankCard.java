@@ -4,6 +4,8 @@
  */
 package mms.electricitybillmanaggementsytsem;
 
+import java.sql.Date;
+
 /**
  *
  * @author Nada220961
@@ -11,7 +13,17 @@ package mms.electricitybillmanaggementsytsem;
 public class BankCard implements IPayBill { 
     private String cardNumber;// mn electricityusgae
     private int cvv;
-    private String cardholdername; 
+    private String cardholderName; 
+    private Date expiryDate;
+
+    public BankCard(String cardNumber, int cvv, String cardholdername, Date expirydate) {
+        this.cardNumber = cardNumber;
+        this.cvv = cvv;
+        this.cardholderName = cardholdername;
+        this.expiryDate = expirydate;
+    }
+    
+    
 
     public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
@@ -44,31 +56,28 @@ public class BankCard implements IPayBill {
     private double amount;
     private double paymentFees;
 
-    public void payBill(double amount) {
-     throw new UnsupportedOperationException("Not supported yet.");
-    }
-    
-    
-    
-
-    private String expirydate;
-    String getExpiryDate() {
-        return expirydate;
-    }
-
-    String getCardHolderName() {
-        return cardholdername;
-    }
-
     @Override
     public void PayBill(double amount) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+     throw new UnsupportedOperationException("Not supported yet.");
     }
 
-      public static boolean createAccount(String CardNumber ,int cvv, String cardholdername){
-        String sqlStmt = "INSERT INTO `bankcard` (cardnumber, cvv, cardholdername) VALUES ('" + CardNumber + "','" + cvv + "','" + cardholdername + "')";
-        boolean res = Database.getInsatnce().insertStmt(sqlStmt);
-        return res;
+    public int getCvv() {
+        return cvv;
+    }
+
+    public String getCardholderName() {
+        return cardholderName;
+    }
+
+    public Date getExpiryDate() {
+        return expiryDate;
+    }
+
+      public static BankCard createAccount(String CardNumber ,int cvv, String cardholdername, Date expiryDate){
+        String sqlStmt = "INSERT INTO `bankcard` (cardnumber, cvv, cardholdername, expirydate,amount) VALUES ('" + CardNumber + "','" + cvv + "','" + cardholdername + "','" + expiryDate + "', '1000')";
+        Database s = Database.getInsatnce();
+        boolean res = s.insertStmt(sqlStmt);
+        return res?new BankCard(CardNumber,cvv,cardholdername,expiryDate):null;
     }
 
   
