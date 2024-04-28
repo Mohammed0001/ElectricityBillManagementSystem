@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ *
+ * @author Karim 219226
+ */
 
 public class Bill {
     private int id;

@@ -80,7 +80,5 @@ public class Technician extends User {
     @Override
     public void openHome(){
         new TechnicianGUI(this).setVisible(true);
-    }
-
-    
+    }    
 }
