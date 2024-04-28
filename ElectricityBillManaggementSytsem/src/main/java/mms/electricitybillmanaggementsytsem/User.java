@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 
 public class User {
     private int id;
+    private String notification;
     private String name;
     private String username;
     private String password;
@@ -65,6 +66,16 @@ public class User {
         this.password = password;
         updateAccount();
     }
+
+    public String getNotification() {
+        return notification;
+    }
+
+    public void setNotification(String notification) {
+        this.notification = notification;
+    }
+    
+    
     
     public void openHome(){
         
@@ -80,10 +91,14 @@ public class User {
                 if (rs.getString("type").equals("admin")){
                     return Admin.getAdmin(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
                 }else if(rs.getString("type").equals("customer")){
-                    return new Customer(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
+                    Customer c = new Customer(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
+                    c.setNotification(rs.getString("notification"));
+                    return c;
                 }
                 else if(rs.getString("type").equals("employee")){
-                    return new Employee(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password") , "");
+                    Employee e = new Employee(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password") , "");
+                    e.setNotification(rs.getString("notification"));
+                    return e;
                 }
                 else if(rs.getString("type").equals("utc")){
                     return new UtilityCompany(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
@@ -92,7 +107,9 @@ public class User {
                    return new Technician(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password") , "");
                }
                 else if(rs.getString("type").equals("manager")){
-                    return new Manager(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
+                    Manager m = new Manager(rs.getInt("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
+                    m.setNotification(rs.getString("notification"));
+                    return m;
                 }
             }
         } catch (SQLException ex) {
