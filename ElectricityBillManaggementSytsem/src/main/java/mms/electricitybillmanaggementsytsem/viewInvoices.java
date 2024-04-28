@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 public class viewInvoices extends javax.swing.JFrame {
 
     private User user ;
-    ArrayList <Payment> payments ;
+    ArrayList <PaymentB> payments ;
     ArrayList <Customer> customers;
     public viewInvoices(User user ) {
        this.user = user;
@@ -36,13 +36,13 @@ public class viewInvoices extends javax.swing.JFrame {
     }
     public void viewBills(int id){
         if (user instanceof Customer) {
-           payments = Payment.viewInvoices(user.getId());
+           payments = PaymentB.viewInvoices(user.getId());
         }else{
-            payments = Payment.viewInvoices(id);
+            payments = PaymentB.viewInvoices(id);
         }
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-        for(Payment payment : payments){
+        for(PaymentB payment : payments){
             model.addRow(new Object[]{payment.getTransactionNumber(),payment.getDate()});
         }
     } 

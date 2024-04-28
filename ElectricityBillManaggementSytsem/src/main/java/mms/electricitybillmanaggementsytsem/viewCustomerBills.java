@@ -184,8 +184,7 @@ public class viewCustomerBills extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (jTable1.getSelectedRow() != -1) {
-            bills.get(jTable1.getSelectedRow());
-            new payBillGUI(user).setVisible(true);
+            new payBillGUI(user , bills.get(jTable1.getSelectedRow())).setVisible(true);
             this.setVisible(false);
         }else{
              JOptionPane.showMessageDialog(null, "Please! Select Bill First", "INVALID CREDINTIALS!", JOptionPane.PLAIN_MESSAGE);
@@ -200,7 +199,7 @@ public class viewCustomerBills extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
          if (jTable1.getSelectedRow() != -1) {
             bills.get(jTable1.getSelectedRow());
-            //new AddPaymentForm().setVisible(true);
+            new AddPaymentForm(new Payment()).setVisible(true);
         }else{
              JOptionPane.showMessageDialog(null, "Please! Select Bill First", "INVALID CREDINTIALS!", JOptionPane.PLAIN_MESSAGE);
         }

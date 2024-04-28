@@ -70,24 +70,7 @@ import java.util.logging.Logger;
         this.date = date;
     }
     
-    public static ArrayList<Payment> viewInvoices( int custid) {
-        ArrayList<Payment> payments =  new ArrayList<>();
-        ResultSet rs = Database.getInsatnce().selectStmt("SELECT * FROM payment;");
 
-        try {
-            while(rs.next()){
-                Payment p = new Payment();
-                p.setTransactionNumber(rs.getInt("transactionNumber"));
-                p.setDate(rs.getString("date"));
-                p.setValue(rs.getInt("amount"));
-                payments.add(p);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Payment.class.getName()).log(Level.SEVERE, null, ex);
-        }
-             
-        return payments;
-    }
     
     public void addDiscount(double discount) {
         

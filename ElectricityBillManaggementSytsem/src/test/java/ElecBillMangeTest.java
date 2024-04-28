@@ -11,15 +11,14 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author mabou
  */
 public class ElecBillMangeTest {
-    ElectricityUsage Eusage ;
-    //create bill
-    
-    
+    //create bill   
     @Test
     public void createBillTest() {
-        Eusage = new 
-        System.out.println("ElecBillMangeTest.hello()");
-        assertTrue(true);
+        int MeterReading = 200; // test meter reading
+        int customerId = 2; // an already inserted customer
+        ElectricityUsage Eusage = new ElectricityUsage(MeterReading);
+        boolean actualResult = Eusage.generateUsage(customerId); // to generate the usgae for the customer
+        assertTrue(actualResult);
     }
     //payment
     @Test
