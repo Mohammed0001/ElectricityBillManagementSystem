@@ -19,7 +19,7 @@ public class EmployeeGUI extends javax.swing.JFrame {
         this.employee = employee;
         initComponents();
         jLabel1.setText("Welcome! Employee, " + employee.getName());
-        jLabel2.setText("Notification " + employee.getNotification());
+        jLabel2.setText("Notification: " + employee.getNotification());
     }
 
 

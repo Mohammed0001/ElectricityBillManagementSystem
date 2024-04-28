@@ -12,7 +12,7 @@ public class CustomerGUI extends javax.swing.JFrame {
        this.customer = customer;
        initComponents();
        jLabel1.setText("Welcome! " + customer.getName());    
-       jLabel2.setText("Notification " + customer.getNotification()); 
+       jLabel2.setText("Notification: " + customer.getNotification()); 
        elecusage.setText("Electricity Meter reading : "+String.valueOf(ElectricityUsage.getusage(customer.getId()).getMeterReading()));
     }
 
