@@ -34,7 +34,8 @@ public class ElecBillMangeTest {
     
     @Test
     public void manageCategory() {
-        System.out.println("ElecBillMangeTest.hello()");
-        assertTrue(true);
+        Category cat = new Category(0, 1.2, 1.2, 00);
+        boolean actualValue = cat.manageCategory();
+        assertTrue(actualValue);
     }
 }
