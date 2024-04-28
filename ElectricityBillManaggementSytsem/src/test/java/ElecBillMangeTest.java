@@ -23,8 +23,11 @@ public class ElecBillMangeTest {
     //payment
     @Test
     public void payBillTest() {
-        System.out.println("ElecBillMangeTest.hello()");
-        assertTrue(true);
+        Bill b = new Bill(1, 10, 1002, new BillPending());
+        PaymentB p = new PaymentB(b);
+        p.setType(new CashB());
+        boolean actualValue = p.payBill();
+        assertTrue(actualValue);
     }
     //
     
