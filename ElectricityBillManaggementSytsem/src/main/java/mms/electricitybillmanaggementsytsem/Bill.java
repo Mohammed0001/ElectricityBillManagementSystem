@@ -134,6 +134,7 @@ public class Bill {
 
     public void setStatus(IBillStatus status) {
         this.status = status;
+        updateBill();
     }
 
     public boolean createBill(){
