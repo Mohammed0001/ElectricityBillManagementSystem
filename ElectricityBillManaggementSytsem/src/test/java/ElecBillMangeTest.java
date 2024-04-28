@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author mabou
  */
+
 public class ElecBillMangeTest {
     //create bill   
     @Test
@@ -32,7 +33,7 @@ public class ElecBillMangeTest {
     //
     
     @Test
-    public void hello() {
+    public void manageCategory() {
         System.out.println("ElecBillMangeTest.hello()");
         assertTrue(true);
     }
