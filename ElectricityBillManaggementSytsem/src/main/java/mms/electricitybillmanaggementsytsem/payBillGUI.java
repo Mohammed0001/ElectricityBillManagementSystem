@@ -309,6 +309,8 @@ public class payBillGUI extends javax.swing.JFrame {
         payment.setType(type);
         if(payment.payBill()){
               JOptionPane.showMessageDialog(null, "Payment Added Successfully!", "Success!", JOptionPane.PLAIN_MESSAGE);
+              user.openHome();
+             this.setVisible(false);
         }else{
             JOptionPane.showMessageDialog(null, "Error! Paying Bill", "Error!", JOptionPane.ERROR_MESSAGE);
         }
