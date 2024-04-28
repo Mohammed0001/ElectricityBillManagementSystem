@@ -172,15 +172,9 @@ public class BankCardForm extends javax.swing.JFrame {
         String cardNumber = jTextField1.getText();
        String cvv = jTextField2.getText();
        String cardHolderName = jTextField3.getText(); 
-       DateFormat df = new SimpleDateFormat("dd/MM/yy");
        String dateString = jTextField4.getText();
-       Date expiryDate;
-       try{
-            expiryDate = (Date) df.parse(dateString);
-       }catch(Exception e){
-            JOptionPane.showMessageDialog(this, "Enter a valid date of the form dd/MM/yy.");
-            return;
-       }
+       System.out.println(jTextField4.getText());
+       Date expiryDate = Date.valueOf(dateString);
        BankCard bankCard = BankCard.createAccount(cardNumber, Integer.parseInt(cvv), cardHolderName, expiryDate);
        payment.setPaymentType(bankCard);
     }//GEN-LAST:event_jButton1ActionPerformed
