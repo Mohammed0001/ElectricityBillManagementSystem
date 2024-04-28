@@ -46,7 +46,9 @@ public class AddPaymentForm extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 204));
         jLabel2.setText("Choose Payment Method :");
 
+        bankbutton.setBackground(new java.awt.Color(0, 0, 0));
         bankbutton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bankbutton.setForeground(new java.awt.Color(255, 255, 255));
         bankbutton.setText("Bank");
         bankbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,7 +56,9 @@ public class AddPaymentForm extends javax.swing.JFrame {
             }
         });
 
+        instapay.setBackground(new java.awt.Color(0, 0, 0));
         instapay.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        instapay.setForeground(new java.awt.Color(255, 255, 255));
         instapay.setText("instapay");
         instapay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,7 +66,9 @@ public class AddPaymentForm extends javax.swing.JFrame {
             }
         });
 
+        cash1.setBackground(new java.awt.Color(0, 0, 0));
         cash1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cash1.setForeground(new java.awt.Color(255, 255, 255));
         cash1.setText("cash");
         cash1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

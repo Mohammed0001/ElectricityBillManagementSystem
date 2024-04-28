@@ -24,8 +24,7 @@ public class BankCardForm extends javax.swing.JFrame {
     public BankCardForm(Payment payment) {
         initComponents();
         this.payment = payment;
-        jButton1.setBackground(Color.BLACK);
-        jButton1.setForeground(Color.WHITE);
+      
     }
 
     /**
@@ -80,8 +79,9 @@ public class BankCardForm extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 255));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Pay Now");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,6 +177,7 @@ public class BankCardForm extends javax.swing.JFrame {
        Date expiryDate = Date.valueOf(dateString);
        BankCard bankCard = BankCard.createAccount(cardNumber, Integer.parseInt(cvv), cardHolderName, expiryDate);
        payment.setPaymentType(bankCard);
+       JOptionPane.showMessageDialog(this, "Your payment has been recorded succesfully!.");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed

@@ -4,6 +4,7 @@
  */
 package mms.electricitybillmanaggementsytsem;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -23,6 +24,7 @@ public class InstaPayform extends javax.swing.JFrame {
     public InstaPayform(Payment payment) {
         this.payment = payment;
         initComponents();
+       
     }
 
     /**
@@ -54,8 +56,9 @@ public class InstaPayform extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 255));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Pay Now");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,6 +114,7 @@ public class InstaPayform extends javax.swing.JFrame {
          InstaPay instapay = InstaPay.createAccount(instaPayHandle);
          
          payment.setPaymentType(instapay);
+         JOptionPane.showMessageDialog(this, "Your payment has been recorded succesfully!.");
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
